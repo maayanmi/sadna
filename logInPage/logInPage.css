@@ -1,0 +1,40 @@
+
+.container {
+    text-align: center;
+}
+
+
+#welcome {
+    font-size: 7vw; 
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    color: white;
+    font-family: 'Days One', sans-serif;
+    transform: translate(-50%, -50%);
+    clear: both;
+}
+
+.gcontainer {
+    clear: both;
+    position: absolute;
+    left: 45%;
+    top: 60%;
+}
+.g-signin2{border: 5px solid #6d1e52;}
+#not_signed_inw3au5ixw3df2{font-size:14px; margin-right: 20px;}
+
+
+body, html {
+    height: 100%;
+     margin: 0;
+}
+
+.bg { 
+    background-image: url("wallpaper.jpg");
+    background-repeat: no-repeat;
+    height: 100%; 
+    width: 100%;
+    background-size: cover ;
+    background-position: center;
+}
