@@ -1,3 +1,4 @@
+
 .containerM {
     box-sizing: border-box;
     float:left;
@@ -40,11 +41,10 @@
     margin-right: 5px;
 }
 .header{
+    display: block;
     background-color: #292c2f;
-}
-
-body{
-    background-color: #c3cef5;
+    width:100%;
+    position: absolute;
 }
 
 #algoSec{
@@ -53,6 +53,110 @@ body{
     height: 120;
     padding-top: 10%;
 }
+
+<!--MAIN_MENU-------------------->
+
+.main{
+   width: 100%;
+    position: absolute;
+}
+
+body {
+ background: rgba(237,237,235,0.7);
+ font: 14px/21px Monaco, sans-serif;
+ color: #999;
+ font-smoothing: antialiased;
+ text-size-adjust: 100%;
+ height: auto;
+}
+
+/* ~~~~~~~ INIT. BTN ~~~~~~~ */
+ul {
+  list-style-type: none;
+}
+
+.btn {		
+	position: relative;	
+	padding: 1.4rem 4.2rem;
+	padding-right: 3.1rem;
+	font-size: 1.4rem;
+	color: var(--inv);
+	letter-spacing: 1.1rem;
+	text-transform: uppercase;
+	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);	
+	user-select: none;
+}
+
+.btn:before, .btn:after {
+	content: '';
+	position: absolute;	
+	transition: inherit;
+	z-index: -1;
+}
+
+.btn:hover {
+	color: var(--def);
+	transition-delay: .6s;
+}
+
+.btn:hover:before {
+	transition-delay: 0s;
+}
+
+.btn:hover:after {
+	background: var(--inv);
+	transition-delay: .4s;
+}
+
+.from-top:before, 
+.from-top:after {
+	left: 0;
+	height: 0;
+	width: 100%;
+}
+
+.from-top:before {
+	bottom: 0;	
+	border: 1px solid var(--inv);
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.from-top:after {
+	top: 0;
+	height: 0;
+}
+
+.from-top:hover:before,
+.from-top:hover:after {
+	height: 100%;
+}
+
+/* ~~~~~~~~~~~~ GLOBAL SETTINGS ~~~~~~~~~~~~ */
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+body {
+	--def: #96B7C4; 	
+	--inv: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	background-image: url("background.jpeg(-25deg, #616161 0%, #96B7C4 100%))"); /*linear-gradient(-25deg, #616161 0%, #96B7C4 100%);*/
+}
+
+html {
+	font-size: 12px;
+	font-family: 'Playfair Display', serif;
+}
+
+div {margin-bottom: 3rem;}
+div:last-child {margin-bottom: 0;}
 
 <!--FOOTER -------------------->
 
@@ -71,7 +175,6 @@ background-color: #292c2f;
 	font: bold 16px;
     font-family: sans-serif;
 	padding: 55px 50px;
-	margin-top: 100px;
     padding: 30px 50px;
 }
 
