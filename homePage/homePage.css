@@ -58,14 +58,18 @@ header{
 .main{
    width: 100%;
    position: absolute;
-   background-image: url("background.jpeg"); 
-   opacity: 0.2;
-   height: 300px;
 }
 
 /* ~~~~~~~ INIT. BTN ~~~~~~~ */
 ul {
-  list-style-type: none;
+    list-style-type: none;
+    padding-left: 35%;
+    background-image: url("background4.jpg"); 
+    opacity: 0.7;
+    background-repeat: repeat-y;
+    margin: 0;
+    height:355px;
+    padding-top:60px;
 }
 
 .btn {		
@@ -134,7 +138,7 @@ ul {
 body {
 	--def: #96B7C4; 	
 	--inv: #fff;
-	display: flex;
+	/*display: flex;*/
 	align-items: center;
 	flex-direction: column;
 	height: 100vh;
