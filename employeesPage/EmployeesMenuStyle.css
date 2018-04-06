@@ -1,0 +1,38 @@
+legend {
+    width: 200px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    color: aliceblue;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 1px solid white;
+}
+.btn{
+    font-family: cursive;
+    font-size: 1.2rem;
+}
+
+.row{
+    margin-top: 15px;
+}
+
+.form-control{
+    width: 300px;
+}
+.search-part{
+    display: block;
+    margin: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.main{
+    padding-bottom: 15px;
+}
