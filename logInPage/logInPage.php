@@ -62,7 +62,7 @@
            function per(){
             sessionStorage.permission=permission ;
             if (permission!=0){
-                window.location="../home%20page/homePage.html";
+                window.location="../homepage/homePage.html";
                 }
             else
                 window.location="unauthorized.html"
