@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <!-- Header and Footer bootstrap css -->
+      
+      <!--Meain menu bootstrap css-->
+<!--
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+-->
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!--Meain menu bootstrap css-->
+      
       <!-- Bootstrap Footer Social icons -->
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
       <link rel="stylesheet" href="assets/css/Footer-with-social-icons.css">
       <!--/ Bootstrap Footer Social icons -->
-   
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="homePage.css" >
-	  <!-- Header and Footer bootstrap css -->
       
+      <link rel="stylesheet" href="homePage.css" >
 
   </head>
   <body>
@@ -21,13 +32,26 @@
             <img id ="home" src = "home.png" href = "#">
             <img id ="logOut" src = "logOut.png" href = "#">
         </div>
-        
-
     </header>
-    <main>
+      <main>
+        <div class = "main">
+            <ul>
+                <li><a href= ""><div class="btn from-top">Employees</div></a></li>
+                <li><a href= ""><div class="btn from-top">Managing</div></a></li>
+                <li><a href= ""><div class="btn from-top">Employees</div></a></li>
+                <li><a href= ""><div class="btn from-top">Evaluations</div></a></li>
+            </ul>
+        </div>
+      </main>
 
-
-    </main>  
+    <script>
+        $(document).ready(function() {
+            $('.dc-morph-btns li').on('click', function() {
+                $('.dc-morph-btns li').removeClass("selected");
+                $(this).toggleClass("selected"); 
+            });
+        });
+    </script>      
     
     <!------------FOOTER--------------->
     <footer class="footer-distributed">
@@ -37,12 +61,10 @@
 				<i class="fa fa-map-marker"></i>
                   <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
               </div>
-
               <div>
 				<i class="fa fa-phone"></i>
                 <p>+972 50 6996868 </p>
               </div>
-
               <div>
 				<i class="fa fa-envelope"></i>
                 <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
