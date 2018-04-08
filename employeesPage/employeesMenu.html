@@ -23,41 +23,36 @@
              <div class="container"  >
 			 <div class="row main" >
 				<div class="main-login main-center">
+                    <h3>Employees</h3>
                     <fieldset>
                         <legend>Search Employee:</legend>
-                        <div class="search-part">
-                            <div class="col-md-3 col-sm-3 col-xs-3 sec">
-                                <label for="name" class="cols-sm-2 lables" >Employee's Name
-                                    <span id="req"></span></label>
-                                <input type="search" class="form-control">
-                            </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3 sec">
+                            <label for="name" class="cols-sm-2 lables" >Employee's Name:
+                                  <span id="req"></span></label>
+                             <input type="search" class="form-control">
+                        </div>
+                        <br>
+                        <div class="emp_depart col-md-3 col-sm-3 col-xs-3 sec">
+                            <label for="name" class="cols-sm-2 lables" >Employee's Department:
+                                <span id="req"></span></label>
+                            <input type="search" class="form-control">
                         </div>
                         <br>
                         <div class="search-part">
-                            <div class="col-md-3 col-sm-3 col-xs-3 sec">
-                                <label for="name" class="cols-sm-2 lables" >Employee's Department
-                                    <span id="req"></span></label>
-                                <input type="search" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="search-part">
-                             <div class="row">
+
                                 <div class="col-md-5 col-sm-5 col-xs-5"></div>
-                                <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Search</button></div>
+                                <div class="search col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Search</button></div>
                                 <div class="col-md-5 col-sm-5 col-xs-35"></div>
-                            </div>
+
                         </div>
                     </fieldset>
                     
                     <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-5"></div>
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Add New Employee</button></div>
-                        <div class="col-md-5 col-sm-5 col-xs-35"></div>
+                        <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='newEmployee.html'">Add New Employee</button></div>
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-5"></div>
                         <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Create MBO Report</button></div>
                         <div class="col-md-5 col-sm-5 col-xs-35"></div>
                     </div>
@@ -88,7 +83,7 @@
                 <div class="footer-right">
                     <p class="footer-company-about">
                          <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "#">Employees</a></p>
+                         <p><a herf = "employeesMenu.html">Employees</a></p>
                          <p><a herf = "#">Employees Enquiries</a></p>
                          <p><a herf = "#">Evaluations</a></p>
                     </p>

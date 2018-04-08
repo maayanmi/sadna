@@ -284,10 +284,11 @@ div:last-child {margin-bottom: 0px; }
     color: white;
 }
 
+
 .footer-distributed .footer-company-about{
 	line-height: 20px;
 	color:  #92999f;
-	font-size: 13px;
+	font-size: 18px;
 	font-weight: normal;
 	margin: 0;
     margin-top: 5px;
@@ -299,6 +300,10 @@ div:last-child {margin-bottom: 0px; }
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-company-about p{
+    margin-bottom: 15px;
 }
 
 .footer-distributed .footer-icons{
