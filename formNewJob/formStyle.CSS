@@ -11,16 +11,20 @@
     -webkit-overflow-scrolling: touch;
 }
 body, html{
-     height: 100%;
+    height: 100%;
  	background-repeat: no-repeat;
- 	background:url();
+ 	/*background:url();*/
 
-	    background-size: cover;
+	    /*background-size: cover;*/
 }
-
-.main{
- 	
-width: 100%;
+.container{
+    background-image: url("../homePage/background4.jpg"); 
+    opacity: 0.7;
+    background-repeat: repeat-y;
+    width: 100%;
+}
+.row{
+    width: 100%;
 }
 
 h1.title { 
@@ -73,6 +77,9 @@ padding: 8px 12px !important;
     border: 1px solid #ccc;
     margin-top: 28px;
     padding: 6px 12px;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 5px;
     color: #666;
     text-shadow: 0 1px #fff;
     cursor: pointer;
@@ -97,17 +104,22 @@ padding: 8px 12px !important;
  	max-width: 800px;
     padding: 10px 40px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	background:#BF3EFF;
 =======
 	background:#8904B1;/*#0c8a9e61*/
 >>>>>>> fa217cb13c48348fc6b6337b240b14745debab62
+=======
+	background:#0f3769;
+>>>>>>> 743cf553a01da7d9cba1c1f5cc8e96f093b44fc1
 	    color: #FFF;
     text-shadow: none;
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
 box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
-
+    opacity: 0.9;
 }
+
 span.input-group-addon i {
     color: #BF3EFF;
     font-size: 17px;
@@ -129,4 +141,12 @@ color:red;
 .selections{border: 2px double black;
 margin: 3px;
 padding: 4px;
+}
+
+textarea{
+    color: black;
+}
+
+span.input-group-addon i{
+    color: #ad33ff;
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employees Menu</title>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        
+         <link rel="stylesheet" href="../homePage/homePage.css" >
+        <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+        <link rel="stylesheet" href="EmployeesMenuStyle.css">
+    </head>
+    <body>
+        <header>       
+            <img id ="logo" src = "../homePage/logo.png">
+            <img id ="home" src = "../homePage/home.png" href = "#">
+            <img id ="logOut" src = "../homePage/logOut.png" href = "#">
+        </header>
+      
+<!-------------MAIN--------------->
+        <main>
+             <div class="container"  >
+			 <div class="row main" >
+				<div class="main-login main-center">
+                    <h3>Employees</h3>
+                    <fieldset>
+                        <legend>Search Employee:</legend>
+                        <div class="col-md-3 col-sm-3 col-xs-3 sec">
+                            <label for="name" class="cols-sm-2 lables" >Employee's Name:
+                                  <span id="req"></span></label>
+                             <input type="search" class="form-control">
+                        </div>
+                        <br>
+                        <div class="emp_depart col-md-3 col-sm-3 col-xs-3 sec">
+                            <label for="name" class="cols-sm-2 lables" >Employee's Department:
+                                <span id="req"></span></label>
+                            <input type="search" class="form-control">
+                        </div>
+                        <br>
+                        <div class="search-part">
+
+                                <div class="col-md-5 col-sm-5 col-xs-5"></div>
+                                <div class="search col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Search</button></div>
+                                <div class="col-md-5 col-sm-5 col-xs-35"></div>
+
+                        </div>
+                    </fieldset>
+                    
+                    <div class="row">
+                        <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='newEmployee.html'">Add New Employee</button></div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Create MBO Report</button></div>
+                        <div class="col-md-5 col-sm-5 col-xs-35"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+		</div>
+        </main>
+<!------------FOOTER--------------->
+        <footer class="footer-distributed">
+            <div class="footer-style">
+              <div class="footer-center">
+                  <div>
+                    <i class="fa fa-map-marker"></i>
+                      <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
+                  </div>
+
+                  <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+972 50 6996868 </p>
+                  </div>
+
+                  <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
+                  </div>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-company-about">
+                         <p><a herf = "#">Managing Job</a></p>
+                         <p><a herf = "employeesMenu.html">Employees</a></p>
+                         <p><a herf = "#">Employees Enquiries</a></p>
+                         <p><a herf = "#">Evaluations</a></p>
+                    </p>
+                </div>
+             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
+            </div>
+        </footer>
+
+    </body>
+</html>

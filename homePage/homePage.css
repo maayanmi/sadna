@@ -74,11 +74,11 @@ ul {
 
 .btn {		
 	position: relative;	
-	padding: 1.4rem 4.2rem;
-	padding-right: 3.1rem;
+	/*padding: 1.4rem 4.2rem;
+	padding-right: 3.1rem;*/
 	font-size: 1.4rem;
 	color: var(--inv);
-	letter-spacing: 1.1rem;
+	letter-spacing: 0.2rem;
 	text-transform: uppercase;
 	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);	
 	user-select: none;
@@ -141,7 +141,7 @@ body {
 	/*display: flex;*/
 	align-items: center;
 	flex-direction: column;
-	height: 100vh;
+	height:auto/*100vh*/;
 	width: 100%;
 
 }
@@ -152,7 +152,11 @@ html {
 }
 
 div {margin-bottom: 1rem;}
+<<<<<<< HEAD:homePage/homePage.css
 div:last-child {margin-bottom: 0;}
+=======
+div:last-child {margin-bottom: 0px; }
+>>>>>>> 743cf553a01da7d9cba1c1f5cc8e96f093b44fc1:homePage/homePage.css
 
 <!--FOOTER -------------------->
 
@@ -284,10 +288,11 @@ div:last-child {margin-bottom: 0;}
     color: white;
 }
 
+
 .footer-distributed .footer-company-about{
 	line-height: 20px;
 	color:  #92999f;
-	font-size: 13px;
+	font-size: 18px;
 	font-weight: normal;
 	margin: 0;
     margin-top: 5px;
@@ -299,6 +304,10 @@ div:last-child {margin-bottom: 0;}
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-company-about p{
+    margin-bottom: 15px;
 }
 
 .footer-distributed .footer-icons{
