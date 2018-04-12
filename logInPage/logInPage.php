@@ -1,6 +1,4 @@
  <?php session_start();?>
- 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,7 +26,7 @@
 <script>
     function onSuccess(googleUser) {
         console.log('Signed in as: ' + googleUser.getBasicProfile().getName()); 
-        $('#proceed').show(0); // button will appear after sign in
+        
         
         // send user details to process.php
         var id_token = googleUser.getAuthResponse().id_token;
@@ -40,7 +38,13 @@
         //after sending it gets permission number from process.php
         xhr.onload = function() {
           console.log('Signed in as: ' + xhr.responseText);
-          permission = xhr.responseText;
+
+          if (permission == null ){
+               location.reload();
+          }
+            
+           else
+               $('#proceed').show(0); // button will appear after sign in
         };
 
     xhr.send('theurl=' + theUrl);
@@ -52,15 +56,17 @@
                       
             <div  class="g-signin2" data-onsuccess="onSuccess"></div>
             <button type="button" id="proceed" onclick="per()" style="display: none;">Proceed</button>
-                
+              
                   
         </div>
     </div>
             
             
 <script>
+      permission = <?php session_start(); echo $_SESSION["permission"] ?>;
            function per(){
-            sessionStorage.permission=permission ;
+               
+               console.log('aas: ' + permission);
             if (permission!=0){
                 window.location="../homePage/homePage.html";
                 }

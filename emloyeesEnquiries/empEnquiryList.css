@@ -1,0 +1,26 @@
+h3{ display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;}
+
+
+.btn{
+	float: right;
+    font-family: cursive;
+    font-size: 1.2rem;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

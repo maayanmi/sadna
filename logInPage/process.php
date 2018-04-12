@@ -1,12 +1,14 @@
 <?php
-session_start();
 
+
+error_reporting(0);
+ini_set('display_errors', 0);
 
 $theurl = $_POST["theurl"] ;
 $json = file_get_contents($theurl);
 $obj = json_decode($json);
 $email = $obj->{'email'};
-$_SESSION["email"]=$email;
+$name = $obj->{'name'};
 
 
 $servername = "localhost";
@@ -38,8 +40,12 @@ if ($result->num_rows > 0) {
 else {
         $permission = 0;
     }
-
-echo $permission
+    
+session_start();
+$_SESSION["email"]=$email;
+$_SESSION["name"]=$name;
+$_SESSION["permission"]=$permission ;
+$conn->close();
  ?>
  
  
