@@ -36,3 +36,51 @@ fieldset {
 .main{
     padding-bottom: 15px;
 }
+
+.search{
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-left: 83%;
+}
+
+.emp_depart{
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+h3{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.row{
+    margin-bottom: 5px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 25px;
+}
+
+td, tr {
+    border: 1px solid #252240;
+    text-align: left;
+    padding: 8px;
+    color:#001a4d;
+    font-weight: 600;
+    background-color:#d1e0e0;
+}
+th{
+    border: 1px solid #252240;
+    text-align: left;
+    padding: 8px;
+    color:#eaeae1;
+    font-weight: 600;
+    background-color:#428bca;
+}
