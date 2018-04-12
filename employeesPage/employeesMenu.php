@@ -172,7 +172,7 @@
                 <div class="footer-right">
                     <div class="footer-company-about">
                          <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "employeesMenu.html">Employees</a></p>
+                         <p><a herf = "employeesMenu.php">Employees</a></p>
                          <p><a herf = "#">Employees Enquiries</a></p>
                          <p><a herf = "#">Evaluations</a></p>
                     </div>
