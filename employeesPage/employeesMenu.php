@@ -13,9 +13,9 @@
     </head>
     <body>
         <header>       
-            <img id ="logo" src = "../homePage/logo.png">
-            <img id ="home" src = "../homePage/home.png" href = "#">
-            <img id ="logOut" src = "../homePage/logOut.png" href = "#">
+            <img id ="logo" src = "../homePage/logo.png" href = "../homePage/homePage.html">
+            <img id ="home" src = "../homePage/home.png" href = "../homePage/homePage.html">
+            <img id ="logOut" src = "../homePage/logOut.png" href = "../logInPage/logInPage.php">
         </header>
       
 <!-------------MAIN--------------->
