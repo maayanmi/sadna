@@ -35,8 +35,14 @@ h3{
     text-align: center;
 }
 
-.row{
+.create{
+    float:left;
     margin-bottom: 5px;
+}
+
+.buttonList{
+    float: left;
+    margin-left: 10px;
 }
 
 table {
