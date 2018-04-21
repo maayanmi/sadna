@@ -43,7 +43,7 @@
 			<div class="row main" >
 				<div class="main-login main-center">
 				
-					<form class="" method="post" action="thankyou.php">
+					<form class="" method="post" action="addNewEmployee.php">
 						<h3>Create New Employee</h3>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 lables" >Name
@@ -168,28 +168,8 @@
 							</div>
 						</div> 
                         
-                        <div class="form-group">
-							<label for="cv" class="cols-sm-2 control-label"> CV <span id="req"></span></label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="file" class="form-control" name="cv" id="cv" value="choose File" required>
-								</div>
-							</div>
-						</div>
-                        
-                         <div class="form-group">
-							<label for="cv" class="cols-sm-2 control-label"> Employee's Picture <span id="req"></span></label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="file" class="form-control" name="pic" accept="image/*">
-								</div>
-							</div>
-						</div>
-                        
 						<div class="save">
-                            <input type="Save" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
 						</div>
 						
 					</form>
@@ -227,12 +207,5 @@
          <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
         </div>
     </footer>
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("cv");
-            x.disabled = true;
-        }
-    </script>
  </body>
 </html>
