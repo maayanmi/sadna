@@ -5,13 +5,21 @@
         
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+        <style>
+            #success{
+                height: 350px;
+                font-family: cursive;
+                font-size: 24px;
+                text-align: center;
+            }
+        </style>
     </head>
     
     <body>
-        <header>       
-            <img id ="logo" src = "../homePage/logo.png" href = "../homePage/homePage.html">
-            <img id ="home" src = "../homePage/home.png" href = "../homePage/homePage.html">
-            <img id ="logOut" src = "../homePage/logOut.png" href = "../logInPage/logInPage.php">
+        <header>     
+            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
+            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
+            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
         </header>
       
 <!-------------MAIN--------------->
@@ -34,6 +42,47 @@
                             die("Connection failed: " . $conn->connect_error);
                         } 
                     ?>
+                    <div class="col-md-2 col-sm-2 col-xs-3"></div>
+                    <div class="col-md-2 col-sm-2 col-xs-3"></div>
+                    <div class="col-md-2 col-sm-2 col-xs-3"></div>
+                    <div id="success">
+                        <?php
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
+
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+
+                            $name = $_POST['name'];
+                            $adress = $_POST['adress'];
+                            $phone_number = $_POST['phone_number'];
+                            $family_status = $_POST['family_status'];
+                            $gender = $_POST['gender'];
+                            $job = $_POST['job'];
+                            $department = $_POST['department'];
+                            $manager = $_POST['manager'];
+                            $salary = $_POST['salary'];
+                            $start_date = $_POST['start_date'];
+                            $email = $_POST['email'];
+
+                             $sql ="INSERT INTO `employee` (`name`, `adress`, `phone`, `family_status`, `gender`, `job`, `department`, `manager`, `salary`, `start_date`, `email`) 
+                             VALUES('".$name."', '".$adress."', '".$phone_number."', '".$family_status."', '".$gender."', '".$job."', '".$department."', '".$manager."', '".$salary."', '".$start_date."', '".$email."')";
+
+                            $result = $conn->query($sql);
+
+                            if($result){
+                                echo 'Add new employee complete!';
+                            }
+
+                            $conn->close();
+                        ?>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -71,6 +120,3 @@
     </body>
 
 </html>
-
-</html>
-

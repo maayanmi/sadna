@@ -71,6 +71,7 @@ table {
 td, tr {
     border: 1px solid #252240;
     text-align: left;
+    text-align: center;
     padding: 8px;
     color:#001a4d;
     font-weight: 600;
@@ -79,8 +80,17 @@ td, tr {
 th{
     border: 1px solid #252240;
     text-align: left;
+    text-align: center;
     padding: 8px;
     color:#eaeae1;
     font-weight: 600;
     background-color:#428bca;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    width: 50%;
+    margin: 0 auto;
 }

@@ -3,9 +3,10 @@
     <head>
         <title>Employees Menu</title>
         
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         
          <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
@@ -13,11 +14,17 @@
     </head>
     <body>
         <header>       
-            <img id ="logo" src = "../homePage/logo.png" href = "../homePage/homePage.html">
-            <img id ="home" src = "../homePage/home.png" href = "../homePage/homePage.html">
-            <img id ="logOut" src = "../homePage/logOut.png" href = "../logInPage/logInPage.php">
+            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
+            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
+            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
         </header>
-      
+        <script>
+            function setID(id_emp) { 
+                if (id_emp) {
+                    window.location = 'watchEmployee.php?id_emp=' + id_emp;
+                }
+            };
+        </script>
 <!-------------MAIN--------------->
         <main>
              <div class="container"  >
@@ -45,6 +52,8 @@
                         </div>
                     </fieldset>
                     
+                    <br>
+
                   </form>
                   <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <?php
@@ -73,17 +82,25 @@
                                         <tr>
                                          <th>Name </th>
                                          <th>Department </th>
+                                         <th> </th>
                                         </tr>';
 										 // output data of each row 
 										 
-							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td></tr>"; 
+							    while($row = $result->fetch_assoc()) { 
+                                    $emp_id = $row["id"];
+									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
 								}
 								echo "</table>";
 										 
 							}
-							else
-								echo "0 results";
+							else{
+                            echo 
+                                '<div class="alert alert-info">
+                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
+                                <strong>Info:</strong>No Result Found</div>';
+                            }
                         }
 						//if there is only deprtment
                         else if(empty($emp_name) && !empty($emp_department)){
@@ -104,8 +121,12 @@
 								echo "</table>";
 										 
 							}
-							else
-							    echo "0 results";
+							else{
+                            echo 
+                                '<div class="alert alert-info">
+                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right"  onclick="javascript:window.close()">close</a>
+                                <strong>Info:</strong>No Result Found</div>';
+                            }
                         }
 						//if there is only name
                         else if(empty($emp_department) && !empty($emp_name)){
@@ -126,28 +147,24 @@
     							
     							echo "</table>";
 							}
-							else
-								echo "0 results";
-                        }
-                        
-                        //if both empty
-                        else{
-
+							else{
+                            echo 
+                                '<div class="alert alert-info">
+                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
+                                <strong>Info:</strong>No Result Found</div>';
+                            }
                         }
                         $conn->close();
                     ?>
-                    
-                     <div class="row">
-                        <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='newEmployee.html'">Add New Employee</button></div>
-                    </div>
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick='window.location.href="newEmployee.html"'>Add New Employee</button></div>
+                </div>
                     
                     <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary">Create MBO Report</button></div>
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <button type="button" class="btn btn-primary" onclick="window.location='mbo.php'">Create MBO Report</button></div>
                         <div class="col-md-5 col-sm-5 col-xs-35"></div>
                     </div>
                 </div>
-            </div>
             </div>
         </main>
 <!------------FOOTER--------------->
@@ -172,7 +189,7 @@
                 <div class="footer-right">
                     <div class="footer-company-about">
                          <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "employeesMenu.php">Employees</a></p>
+                         <p><a herf = "employeesMenu.html">Employees</a></p>
                          <p><a herf = "#">Employees Enquiries</a></p>
                          <p><a herf = "#">Evaluations</a></p>
                     </div>
