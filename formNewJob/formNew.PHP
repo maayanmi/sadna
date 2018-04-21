@@ -151,13 +151,32 @@
                         
 						<div class="form-group ">
 							<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Publish" onClick="validate()">
+                            <input type="hidden" name="button_pressed" value="1" />
 						</div>
                         
                         <div>
-                            <input type="Save" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
                         </div>
                         
-                    
+                        
+                        <?php
+
+                                if(isset($_POST['button_pressed']))
+                                {
+                                    $to      = 'hr4ualgosec@gmail.com';
+                                    $subject = 'New Position';
+                                    $message = 'Hello, a new position has been opened. You can see it in the job list';
+                                    $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
+                                        'Reply-To: webmaster@example.com' . "\r\n" .
+                                        'X-Mailer: PHP/' . phpversion();
+
+                                    mail($to, $subject, $message, $headers);
+
+                                    echo 'Email Sent.';
+                                }
+
+                        ?>
+						
 					</form>
 				</div>
 			</div>
