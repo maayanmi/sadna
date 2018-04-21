@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-  <head>
+<html>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Watching A Position</title>
+    <title>Applying For A Job</title>
       
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="formWatchingStyle.CSS">
-      
     <!-- Header and Footer bootstrap css -->
    <link rel="stylesheet" href="../CSS/headerFooter.css" >
 
@@ -26,61 +24,94 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>   
     <![endif]-->
-  </head>
+    <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+    <link rel="stylesheet" href="../homePage/homePage.css" >
+    <link rel="stylesheet" href="applyingStyle.CSS" >
+</head>
     
-    
-  <body>
+    <body>
+        <header>       
+            <img id ="logo" src = "../homePage/logo.png">
+            <img id ="home" src = "../homePage/home.png" href = "#">
+            <img id ="logOut" src = "../homePage/logOut.png" href = "#">
+        </header>
       
-        <!-------------MAIN--------------->
-        
-       
-        
-		<div class="container"  >
-			<div class="row main" >
-				<div class="main-login main-center">
-				
-					<form class="" method="post" action="thankyou.php">
-						
+<!-------------MAIN--------------->
+        <main>
+            <div class="container"  >
+                <div class="row main" >
+				    <div class="main-login main-center">
+                <!-------your main here-------->
+                    
+                    <form class="" method="post" action="thankyou.php">
+						<h3>Job Details</h3>
 						<div class="form-group">
-						<li position-id="comeet-27602" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
-                            <a class="title ui-accordion-header ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top" href="javascript:void(0)" role="tab" id="ui-id-39" aria-controls="ui-id-40" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
-                            <h3>Job's Name</h3>Product Test Engineer<span class="joinus_section_close">×</span>
-                             </a>
-                         <div class="pos_description field-name-body ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" id="ui-id-40" aria-labelledby="ui-id-39" role="tabpanel" aria-hidden="false" style="display: block;">
+							<label for="name" class="cols-sm-2 lables" >Name
+                                <span id="req"></span></label>
+							<div class="inputs">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name" required>
+								</div>
+                            </div>
+
+						</div><br>
                         
-                             <h3>Job's type</h3>     
-                       
-                             
-                             <h3>Job Description</h3><p><span style="font-size: 13px;"></span></p><ul><li>Develop Digital and Mixed Signal test programs and test hardware for CP/FT manufacturing testing </li><li>Device characterization</li><li>Device qualification</li><li>Monitor yields and target cost reduction efforts via test-time reduction</li><li>Silicon failure analysis </li></ul><p><br></p><p><br></p><p><br></p><p>
-                             
-                             <br></p><h3>Job Requirements</h3><p><br></p><ul><li>BS or MS EE&nbsp; degree from recognisable*<a href="http://#_ftn1" title="" target="_blank">[1]</a> universities with a proven track record of product development to high volume production</li><li>4-6 year experience in mixed-signal SOC test development </li><li>Good &nbsp;understanding of characterization techniques and test development fundamentals for mixed-signal ICs</li><li>Solid understanding of DFT test techniques like Scan, JTAG, BIST and other Ad-hoc techniques.</li><li>Proficiency in test vector generation , verification and conversion tools</li><li>&nbsp;ATE loadboard and probe card design</li><li>Experience of using data analysis tools for IC characterisation</li><li>Ability to lead the test-development effort within the organizationThe candidate must be self-starters and be able to work in a fast paced, multi-tasking environmentMust have excellent problem solving and communication skills</li></ul><p><span></span><br></p>
-                                                    
-                            <div id="commit-cont-5" style="display:none"></div>
-                             <button id="btnApply-5" type="button" onclick="showhide('commit-cont-5', '27.602','btnApply-5')">Apply</button>
-                                                                                                                       
-                            </div>
-                                    </li>
-                            
-                            </div>
-						
-					</form>
-				</div>
-			</div>
-		</div>
-</div>
-  
-       </div>
-              </div>
+                          <div class="form-group">
+							<label for="email" class="cols-sm-2 control-label"> Email <span id="req"></span></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="email" class="form-control" name="email" id="email" required>
+								</div>
+							</div>
+						</div><br> 
+                        
+                        <div class="form-group">
+							<label for="cv" class="cols-sm-2 control-label"> CV <span id="req"></span></label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="file" class="form-control" name="cv" id="cv" value="choose File" required>
+								</div>
+							</div>
+						</div>
+                    
+                    <div class="apply">
+                            <input type="apply" id="button" class="btn btn-primary btn-lg btn-block login-button" value="apply" onClick="validate()">
+						</div>
+                    
+            </div>
+        </main>
+<!------------FOOTER--------------->
+        <footer class="footer-distributed">
+            <div class="footer-style">
+              <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
+                </div>
 
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+972 50 6996868 </p>
+                </div>
 
-
-      
-       <!-- Form validation -->
-      <script src="../JS/form.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-
-  </body>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
+                </div>
+               </div>
+                <div class="footer-right">
+                    <div class="footer-company-about">
+                         <p><a herf = "#">Managing Job</a></p>
+                         <p><a herf = "#">Employees</a></p>
+                         <p><a herf = "#">Employees Enquiries</a></p>
+                         <p><a herf = "#">Evaluations</a></p>
+                    </div>
+                </div>
+             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
+            </div>
+        </footer>
+    </body>
 </html>
