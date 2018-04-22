@@ -6,6 +6,11 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	  <!-- Header and Footer bootstrap css -->
       
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!-- Sidenav and Footer bootstrap css -->
+      
       <!--Meain menu bootstrap css-->
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -28,10 +33,23 @@
     </header>
       <main>
         <div class = "main">
+                <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                  <a href="#">Employees</a>
+                  <a href="#">Managing Jobs</a>
+                  <a href="#">Employees Enquiries</a>
+                  <a href="#">Evaluations</a>
+                </div>
+                <span style="font-size:25px;cursor:pointer" onclick="openNav()">☰</span>
             <ul>
                 <li><a href= "../employeesPage/employeesMenu.php"><div class="btn from-top">Employees</div></a></li>
+<<<<<<< HEAD
                 <li><a href= "../jobList/jobMenu.PHP"><div class="btn from-top">Managing Jobs</div></a></li>
                 <li><a href= "../emloyeesEnquiries/empEnquiryList.php"><div class="btn from-top">Employees Enquiries</div></a></li>
+=======
+                <li><a href= ""><div class="btn from-top">Managing Jobs</div></a></li>
+                <li><a href= "../employeesEnquiries/empEnquiryList.php"><div class="btn from-top">Employees Enquiries</div></a></li>
+>>>>>>> employeesPage
                 <li><a href= ""><div class="btn from-top">Evaluations</div></a></li>
             </ul>
         </div>
@@ -67,5 +85,16 @@
          <span> <img id= "algoSec" src = "AlgoSec.png"> </span>
         </div>
     </footer>
+      
+      
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+    </script>
   </body>
 </html>
