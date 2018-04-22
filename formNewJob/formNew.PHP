@@ -52,7 +52,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="request_name" id="request_name" required>
+									<input type="text" id="job_requires" class="form-control" name="job_requires" required>
 								</div>
                             </div>
 
@@ -63,7 +63,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input   type="text" class="form-control" name="Job's creator" id="Job's creator" required >
+									<input type="text" id="job_creator" class="form-control" name="job_creator" required >
 								</div>
 							</div>
                                 
@@ -74,7 +74,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="Job's name" class="form-control" name="Job's name" id="Job's name" required>
+									<input type="text" id="job_name" class="form-control" name="job_name" required>
 								</div>
 							</div>
 						</div>                                                         
@@ -84,7 +84,7 @@
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select name="family_status" class="form-control"  id="family_status" required><optgroup label="options">
+                                    <select name="job_type" class="form-control"  id="job_type" required><optgroup label="options">
                                         <option>Full time job</option>
                                         <option>Part time job</option>
                                     </optgroup>
@@ -98,7 +98,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="job name" class="form-control" name="department" id="department" required>
+									<input type="text" id="job_department" class="form-control" name="job_department" required>
 								</div>
 							</div>
 						</div> 
@@ -109,18 +109,18 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-									<input type="date" class="form-control" name="Job's open date" id="Job's open date" required>
+									<input type="date" id="job_open_date" class="form-control" name="job_open_date" required>
 								</div>
 							</div>
 						</div>                               
                              
                         <div class="details">
                             <div><label for="Job's details">Job's details </label>
-                                <br><textarea cols="96" name="Job's details" rows="4"></textarea>
+                                <br><textarea cols="96" name="job_details" id="job_details" rows="4"></textarea>
                             </div>
                         
                             <div><label for="Job requirements">Job requirements</label>
-                                <textarea cols="96" name="Job requirements" rows="4"></textarea>
+                                <textarea cols="96" name="job_requirements" id="job_requirements" rows="4"></textarea>
                             </div>
                         </div>
                                  
@@ -129,7 +129,7 @@
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <select name="family_status" class="form-control"  id="family_status" required><optgroup label="options">
+                                    <select name="job_status" class="form-control"  id="job_status" required><optgroup label="options">
                                         <option>Approved</option>
                                         <option>Declined</option>
                                     </optgroup>
@@ -138,132 +138,60 @@
                             </div>
                         </div>
                         
-						<div class="publish">
-							<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Publish" onClick="validate()">
-                            <input type="hidden" name="button_pressed" value="1" />
-						</div>
-                        
                         <div class="save">
                             <input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
-                            <input type="hidden" name="button_pressed_1" value="2" />
+                            <input type="hidden" name="button_pressed" value="2" />
                         </div>
                         
                         
                         <?php
-                        
-                       /* $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
-                        
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        
-                        // Check connection
-                        
-                        if (!$conn){
-                            die("Connection failed: " . mysqli_connect_error());
-                        }*/
-                        
-                        
+            
                         if(isset($_POST['button_pressed']))
-                            {
-                            
+                        {
+                              
                             $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
                         
-                        $conn = mysqli_connect($servername, $username, $password, $database);
+                            $conn = mysqli_connect($servername, $username, $password, $database);
                         
-                        // Check connection
-                        
-                        if (!$conn){
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
+                            // Check connection
+
+                            if (!$conn){
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
+
+                                $job_name= $_POST["job_name"];
+                                $job_requires= $_POST["job_requirements"];
+                                $job_creator=$_POST["job_creator"];
+                                $job_type=$_POST["job_type"];
+                                $department=$_POST["job_department"];
+                                $job_open_date=date($_POST["job_open_date"]);
+                                $description=$_POST["job_details"];
+                                
+
+                                $sql="INSERT INTO job (job_name,job_requires,job_creator, job_type,department,job_open_date,description ) values ('".$job_name."','".$job_requires."','".$job_creator."','".$job_type."','".$department."','".$job_open_date."','".$description."' );";
+                                     //$result = $conn->query($sql);
                             
-                            $addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
-                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
-                            $message = mysqli_real_escape_string($conn, $_POST['message']);
-                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
                             
+                            // if successfully updated. 
+                                   if ($conn->query($sql) === TRUE) {
+
                                     $addressee      = 'hr4ualgosec@gmail.com';
                                     $subject = 'New Position';
-                                    $message = 'Hello, a new position has been opened. You can see it in the job list';
+                                    $message = "Hello, a new position has been added to " . $department . " department. You can view it in the job list";
                                     $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
                                         'Reply-To: webmaster@example.com' . "\r\n" .
                                         'X-Mailer: PHP/' . phpversion();
 
-                                    mail($addressee, $subject, $message, $headers);
+                                       mail($addressee, $subject, $message, $headers);
                             
-                               
-                                     echo  "<script> window.alert ('Your email has been sent');
-                                     window.location='../jobList/jobMenu.PHP';
-                                     </script>";
-                                   
-                                      /*echo "<script> window.alert ('There was a problem sending your email, please try again');
-                                     window.location='formNew.PHP';
-                                     </script>";*/
-                                    }
-
-                                    /*echo 'Email Sent.';*/
-                                            
-                            /*$addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
-                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
-                            $message = mysqli_real_escape_string($conn, $_POST['message']);
-                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);*/
-
-                          /*$sql = "INSERT INTO email (addressee, subject, message,headers) VALUES ('$addressee', '$subject', '$message','$headers')";
-
-                            if ($conn->query($sql) === TRUE) {
-                                       
-                                     echo  "<script> window.alert ('Your email has been sent');
-                                     window.location='jobMenu.PHP';
-                                     </script>";
-                                    } 
-                                    else {
-                                      echo "<script> window.alert ('There was a problem sending your email, please try again');
-                                     window.location='formNew.PHP';
-                                     </script>";
-                                    }*/
-                        
-                        if(isset($_POST['button_pressed_1']))
-                        {
-                            $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
-                        
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        
-                        // Check connection
-                        
-                        if (!$conn){
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
-                            
-                            $job_number= $_POST["Job's number"];
-                            $job_name= $_POST["Job's name"];
-                            $job_requires= $_POST["The Job requires"];
-                            $job_creator=$_POST["Job's creator"];
-                            $job_type=$_POST["Job's type"];
-                            $department=$_POST["department"];
-                            $job_open_date=date("Y-m-d");
-                            $description=$_POST["Job's details"];
-                            
-                            
-                            $sql="INSERT INTO job (job_number,job_name,job_requires,job_creator, job_type,department,job_open_date,description ) values ('".$job_number."','".$job_name."','".$job_requires."','".$job_creator."','".$job_type."','".$department."','".$job_open_date."','".$description."' );";
-                                 //$result = $conn->query($sql);
-                            
-                                // if successfully updated. 
-                               if ($conn->query($sql) === TRUE) {
-                                       
-                                     echo  "<script> window.alert ('Your new job has been saved');
-                                     window.location='../jobList/jobMenu.PHP';
-                                     </script>";
-                                    } 
+                                         echo  "<script> window.alert ('Your new job has been saved, and sent on mail');
+                                         window.location='../jobList/jobMenu.PHP';
+                                         </script>";
+                                        } 
                         }
 
                         ?>
