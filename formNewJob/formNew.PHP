@@ -161,7 +161,7 @@
                         
                         <?php
                         
-                         $servername = "localhost";
+                        $servername = "localhost";
                         $database = "maayanmi_hr4u";
                         $username = "maayanmi_eyal";
                         $password = "Aa123";
@@ -176,33 +176,39 @@
                         }
                         
                         
-                            $to = mysqli_real_escape_string($conn, $_POST['to']);
-                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
-                            $message = mysqli_real_escape_string($conn, $_POST['message']);
-                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
-
-                            $sql = "INSERT INTO tb_cform (to, subject, message,headers) VALUES ('$to', '$subject', '$message','$headers')";
-
-                            if($conn->query($sql) === TRUE){
-                             include 'thankyou.html';
-                            }
-                            else
+                        if(isset($_POST['button_pressed']))
                             {
-                             include 'failedForm.html';
-                            }
-
-                            if(isset($_POST['button_pressed']))
-                            {
-                                    $to      = 'hr4ualgosec@gmail.com';
+                                    $addressee      = 'hr4ualgosec@gmail.com';
                                     $subject = 'New Position';
                                     $message = 'Hello, a new position has been opened. You can see it in the job list';
                                     $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
                                         'Reply-To: webmaster@example.com' . "\r\n" .
                                         'X-Mailer: PHP/' . phpversion();
 
-                                    mail($to, $subject, $message, $headers);
+                                    mail($addressee, $subject, $message, $headers);
 
                                     echo 'Email Sent.';
+                            }
+                        ?>
+                        
+                        <?php
+                            $addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
+                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+                            $message = mysqli_real_escape_string($conn, $_POST['message']);
+                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
+
+                            $sql = "INSERT INTO email (addressee, subject, message,headers) VALUES ('$addressee', '$subject', '$message','$headers')";
+
+                            if($conn->query($sql) === TRUE){
+                                <script>
+                                    alert("Email has been successfully sent")
+                                </script>
+                            }
+                            else
+                            {
+                             <script>
+                                    alert("A problem has been occurred")
+                            </script>
                             }
 
                         ?>
