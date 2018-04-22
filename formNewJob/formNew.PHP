@@ -149,20 +149,50 @@
                             </div>
                         </div>
                         
-						<div class="form-group ">
+						<div class="publish">
 							<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Publish" onClick="validate()">
                             <input type="hidden" name="button_pressed" value="1" />
 						</div>
                         
-                        <div>
+                        <div class="save">
                             <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
                         </div>
                         
                         
                         <?php
+                        
+                         $servername = "localhost";
+                        $database = "maayanmi_hr4u";
+                        $username = "maayanmi_eyal";
+                        $password = "Aa123";
+                        $usertable="enquiry";
+                        
+                        $conn = mysqli_connect($servername, $username, $password, $database);
+                        
+                        // Check connection
+                        
+                        if (!$conn){
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        
+                        
+                            $to = mysqli_real_escape_string($conn, $_POST['to']);
+                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+                            $message = mysqli_real_escape_string($conn, $_POST['message']);
+                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
 
-                                if(isset($_POST['button_pressed']))
-                                {
+                            $sql = "INSERT INTO tb_cform (to, subject, message,headers) VALUES ('$to', '$subject', '$message','$headers')";
+
+                            if($conn->query($sql) === TRUE){
+                             include 'thankyou.html';
+                            }
+                            else
+                            {
+                             include 'failedForm.html';
+                            }
+
+                            if(isset($_POST['button_pressed']))
+                            {
                                     $to      = 'hr4ualgosec@gmail.com';
                                     $subject = 'New Position';
                                     $message = 'Hello, a new position has been opened. You can see it in the job list';
@@ -173,7 +203,7 @@
                                     mail($to, $subject, $message, $headers);
 
                                     echo 'Email Sent.';
-                                }
+                            }
 
                         ?>
 						

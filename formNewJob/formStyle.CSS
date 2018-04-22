@@ -43,10 +43,6 @@ hr{
 	color: black;
 }
 
-.form-group{
-	margin-bottom: 15px;
-}
-
 label{
 	margin-bottom: 15px;
 }
@@ -145,4 +141,14 @@ textarea{
 
 span.input-group-addon i{
     color: #ad33ff;
+}
+
+.publish{
+    float: left;
+    left: 5px;
+}
+
+.save{
+    float: left;
+    left: 10px;
 }
