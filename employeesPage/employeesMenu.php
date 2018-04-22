@@ -112,11 +112,15 @@
                                         <tr>
                                          <th>Name </th>
                                          <th>Department </th>
+                                         <th> </th>
                                         </tr>";
 										 // output data of each row 
 										 
 								while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td></tr>"; 
+									$emp_id = $row["id"];
+									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>";
 								}
 								echo "</table>";
 										 
@@ -138,11 +142,15 @@
                                         <tr>
                                          <th>Name </th>
                                          <th>Department </th>
+                                         <th> </th>
                                         </tr>";
 										 // output data of each row 
 										 
     							while($row = $result->fetch_assoc()) {
-    								echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td></tr>"; 
+    								$emp_id = $row["id"];
+									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
     							}
     							
     							echo "</table>";
