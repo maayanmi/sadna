@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+ ?>
 <html>
 <head>
     <meta charset="utf-8">

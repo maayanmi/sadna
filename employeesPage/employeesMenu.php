@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+ ?>
 <html>
     <head>
         <title>Employees Menu</title>
@@ -56,112 +60,122 @@
                   </form>
                   <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <?php
-                        $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
-                        // Create connection
+                        if ($permission == 1) //for hr manger
+                        {
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
 
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        } 
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
 
-                        $emp_name = $_POST["employees_name"];
-                        $emp_department = $_POST["employees_department"];
+                            $emp_name = $_POST["employees_name"];
+                            $emp_department = $_POST["employees_department"];
 
-                        if(!empty($emp_name) && !empty($emp_department)){
-                            $sql = "SELECT * FROM employee WHERE department = '".$emp_department."' 
-                            AND name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
-                            $result = $conn->query($sql);
+                            if(!empty($emp_name) && !empty($emp_department)){
+                                $sql = "SELECT * FROM employee WHERE department = '".$emp_department."' 
+                                AND name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
+                                $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                echo '<table>
-                                        <tr>
-                                         <th>Name </th>
-                                         <th>Department </th>
-                                         <th> </th>
-                                        </tr>';
-										 // output data of each row 
-										 
-							    while($row = $result->fetch_assoc()) {
-                                    $emp_id = $row["id"];
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
-								}
-								echo "</table>";
-										 
-							}
-							else{
-                            echo 
-                                '<div class="alert alert-info">
-                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
-                                <strong>Info:</strong>No Result Found</div>';
+                                if ($result->num_rows > 0) {
+                                    echo '<table>
+                                            <tr>
+                                             <th>Name </th>
+                                             <th>Department </th>
+                                             <th> </th>
+                                            </tr>';
+                                             // output data of each row 
+
+                                    while($row = $result->fetch_assoc()) {
+                                        $emp_id = $row["id"];
+                                        echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
+                                    }
+                                    echo "</table>";
+
+                                }
+                                else{
+                                echo 
+                                    '<div class="alert alert-info">
+                                    <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
+                                    <strong>Info:</strong>No Result Found</div>';
+                                }
                             }
-                        }
-						//if there is only deprtment
-                        else if(empty($emp_name) && !empty($emp_department)){
-                        $sql = "SELECT * FROM employee WHERE department = '".$emp_department."'";
-                            $result = $conn->query($sql);
+                            //if there is only deprtment
+                            else if(empty($emp_name) && !empty($emp_department)){
+                            $sql = "SELECT * FROM employee WHERE department = '".$emp_department."'";
+                                $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                echo "<table>
-                                        <tr>
-                                         <th>Name </th>
-                                         <th>Department </th>
-                                         <th> </th>
-                                        </tr>";
-										 // output data of each row 
-										 
-								while($row = $result->fetch_assoc()) {
-									$emp_id = $row["id"];
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>";
-								}
-								echo "</table>";
-										 
-							}
-							else{
-                            echo 
-                                '<div class="alert alert-info">
-                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right"  onclick="javascript:window.close()">close</a>
-                                <strong>Info:</strong>No Result Found</div>';
-                            }
-                        }
-						//if there is only name
-                        else if(empty($emp_department) && !empty($emp_name)){
-                            $sql = "SELECT * FROM employee WHERE name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
-                            $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    echo "<table>
+                                            <tr>
+                                             <th>Name </th>
+                                             <th>Department </th>
+                                             <th> </th>
+                                            </tr>";
+                                             // output data of each row 
 
-                            if ($result->num_rows > 0) {
-                                echo "<table>
-                                        <tr>
-                                         <th>Name </th>
-                                         <th>Department </th>
-                                         <th> </th>
-                                        </tr>";
-										 // output data of each row 
-										 
-    							while($row = $result->fetch_assoc()) {
-    								$emp_id = $row["id"];
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
-    							}
-    							
-    							echo "</table>";
-							}
-							else{
-                            echo 
-                                '<div class="alert alert-info">
-                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
-                                <strong>Info:</strong>No Result Found</div>';
+                                    while($row = $result->fetch_assoc()) {
+                                        $emp_id = $row["id"];
+                                        echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>";
+                                    }
+                                    echo "</table>";
+
+                                }
+                                else{
+                                echo 
+                                    '<div class="alert alert-info">
+                                    <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right"  onclick="javascript:window.close()">close</a>
+                                    <strong>Info:</strong>No Result Found</div>';
+                                }
                             }
+                            //if there is only name
+                            else if(empty($emp_department) && !empty($emp_name)){
+                                $sql = "SELECT * FROM employee WHERE name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    echo "<table>
+                                            <tr>
+                                             <th>Name </th>
+                                             <th>Department </th>
+                                             <th> </th>
+                                            </tr>";
+                                             // output data of each row 
+
+                                    while($row = $result->fetch_assoc()) {
+                                        $emp_id = $row["id"];
+                                        echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
+                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
+                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
+                                    }
+
+                                    echo "</table>";
+                                }
+                                else{
+                                echo 
+                                    '<div class="alert alert-info">
+                                    <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
+                                    <strong>Info:</strong>No Result Found</div>';
+                                }
+                            }
+                            $conn->close();
                         }
-                        $conn->close();
+                        else//for employee
+                        {
+                            echo "<script> window.alert ('You have no authorization');
+                            window.location='../logInPage/unauthorized.html';
+                            </script>";
+                        }
+                        
                     ?>
                     
                      <div class="row">

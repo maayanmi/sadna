@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+ ?>
 <html>
     <head>
         <title></title>
@@ -25,42 +29,52 @@
                          <div class="col-md-2 col-sm-2 col-xs-3"></div>
                          <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <?php
-                        $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
-                        // Create connection
+                        if ($permission == 1) //for hr manger
+                        {
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
 
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        } 
-                        
-                        $sql = "SELECT * FROM employee
-                                WHERE name IN (	SELECT manager
-				                                FROM `employee`
-				                                WHERE salary < 20000 AND DATEDIFF(start_date,CURDATE())
-                                                GROUP BY manager
-                                                HAVING COUNT(id) > 3 )";
-                        $result = $conn->query($sql);
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
 
-                        if ($result->num_rows > 0) {
-                            echo '<table>
-                                    <tr>
-                                     <th>Name </th>
-                                     <th>Job </th>
-                                     <th>Department </th>
-                                    </tr>';
-                                     // output data of each row 
+                            $sql = "SELECT * FROM employee
+                                    WHERE name IN (	SELECT manager
+                                                    FROM `employee`
+                                                    WHERE salary < 20000 AND DATEDIFF(start_date,CURDATE())
+                                                    GROUP BY manager
+                                                    HAVING COUNT(id) > 3 )";
+                            $result = $conn->query($sql);
 
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>" . $row["name"]. "</td><td>" . $row["job"]. "</td><td>" . $row["department"]. "</td></tr>"; 
+                            if ($result->num_rows > 0) {
+                                echo '<table>
+                                        <tr>
+                                         <th>Name </th>
+                                         <th>Job </th>
+                                         <th>Department </th>
+                                        </tr>';
+                                         // output data of each row 
+
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["job"]. "</td><td>" . $row["department"]. "</td></tr>"; 
+                                }
+                                echo "</table>";
+
                             }
-                            echo "</table>";
-
+                            $conn->close();
                         }
-                        $conn->close();
+                        else//for employee
+                        {
+                            echo "<script> window.alert ('You have no authorization');
+                            window.location='../logInPage/unauthorized.html';
+                            </script>";
+                        }
+                        
                     ?>
                     </div>
                 </div>

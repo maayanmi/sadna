@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+ ?>
 <html>
     <head>
         <title></title>
@@ -33,6 +38,8 @@
                     <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <div id="success">
                         <?php
+                          if ($permission == 1) //for hr manger
+                          {
                             $servername = "localhost";
                             $database = "maayanmi_hr4u";
                             $username = "maayanmi_eyal";
@@ -67,6 +74,14 @@
                             }
 
                             $conn->close();
+                          }
+                        else//for employee
+                        {
+                            echo "<script> window.alert ('You have no authorization');
+                            window.location='../logInPage/unauthorized.html';
+                            </script>";
+                        }
+                          
                         ?>
                     </div>
                     </div>
