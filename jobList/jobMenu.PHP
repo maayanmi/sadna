@@ -126,7 +126,7 @@
                     
                      <div class="create">
                         <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/form.html'">Create New Job</button></div>
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP'">Create New Job</button></div>
                     </div>
                     
                       <div class="buttonList">

@@ -44,7 +44,7 @@
 			<div class="row main" >
 				<div class="main-login main-center">
 				
-					<form class="" method="post" action="thankyou.php">
+					<form class="" method="post">
 						<h3>Creat New Job</h3>
 						<div class="form-group">
 							<label for="The Job requires" class="cols-sm-2 control-label" >The Job requires
@@ -77,18 +77,7 @@
 									<input type="Job's name" class="form-control" name="Job's name" id="Job's name" required>
 								</div>
 							</div>
-						</div>                                 
-                        
-                        <div class="form-group">
-							<label for="Job's number" class="cols-sm-2 control-label"> Job's number <span id="req"></span></label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="Job's number" class="form-control" name="Job's number" id="Job's number" required>
-								</div>
-							</div>
-						</div>
-                        
+						</div>                                                         
                         
                         <div class="form-group">
                             <label for="family_status">Job's type</label>
@@ -155,13 +144,32 @@
 						</div>
                         
                         <div class="save">
-                            <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="hidden" name="button_pressed_1" value="2" />
                         </div>
                         
                         
                         <?php
                         
-                        $servername = "localhost";
+                       /* $servername = "localhost";
+                        $database = "maayanmi_hr4u";
+                        $username = "maayanmi_eyal";
+                        $password = "Aa123";
+                        $usertable="enquiry";
+                        
+                        $conn = mysqli_connect($servername, $username, $password, $database);
+                        
+                        // Check connection
+                        
+                        if (!$conn){
+                            die("Connection failed: " . mysqli_connect_error());
+                        }*/
+                        
+                        
+                        if(isset($_POST['button_pressed']))
+                            {
+                            
+                            $servername = "localhost";
                         $database = "maayanmi_hr4u";
                         $username = "maayanmi_eyal";
                         $password = "Aa123";
@@ -174,10 +182,12 @@
                         if (!$conn){
                             die("Connection failed: " . mysqli_connect_error());
                         }
-                        
-                        
-                        if(isset($_POST['button_pressed']))
-                            {
+                            
+                            $addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
+                            $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+                            $message = mysqli_real_escape_string($conn, $_POST['message']);
+                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
+                            
                                     $addressee      = 'hr4ualgosec@gmail.com';
                                     $subject = 'New Position';
                                     $message = 'Hello, a new position has been opened. You can see it in the job list';
@@ -186,30 +196,75 @@
                                         'X-Mailer: PHP/' . phpversion();
 
                                     mail($addressee, $subject, $message, $headers);
+                            
+                               
+                                     echo  "<script> window.alert ('Your email has been sent');
+                                     window.location='../jobList/jobMenu.PHP';
+                                     </script>";
+                                   
+                                      /*echo "<script> window.alert ('There was a problem sending your email, please try again');
+                                     window.location='formNew.PHP';
+                                     </script>";*/
+                                    }
 
-                                    echo 'Email Sent.';
-                            }
-                        ?>
-                        
-                        <?php
-                            $addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
+                                    /*echo 'Email Sent.';*/
+                                            
+                            /*$addressee = mysqli_real_escape_string($conn, $_POST['addressee']);
                             $subject = mysqli_real_escape_string($conn, $_POST['subject']);
                             $message = mysqli_real_escape_string($conn, $_POST['message']);
-                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);
+                            $headers = mysqli_real_escape_string($conn, $_POST['headers']);*/
 
-                            $sql = "INSERT INTO email (addressee, subject, message,headers) VALUES ('$addressee', '$subject', '$message','$headers')";
+                          /*$sql = "INSERT INTO email (addressee, subject, message,headers) VALUES ('$addressee', '$subject', '$message','$headers')";
 
-                            if($conn->query($sql) === TRUE){
-                                <script>
-                                    alert("Email has been successfully sent")
-                                </script>
-                            }
-                            else
-                            {
-                             <script>
-                                    alert("A problem has been occurred")
-                            </script>
-                            }
+                            if ($conn->query($sql) === TRUE) {
+                                       
+                                     echo  "<script> window.alert ('Your email has been sent');
+                                     window.location='jobMenu.PHP';
+                                     </script>";
+                                    } 
+                                    else {
+                                      echo "<script> window.alert ('There was a problem sending your email, please try again');
+                                     window.location='formNew.PHP';
+                                     </script>";
+                                    }*/
+                        
+                        if(isset($_POST['button_pressed_1']))
+                        {
+                            $servername = "localhost";
+                        $database = "maayanmi_hr4u";
+                        $username = "maayanmi_eyal";
+                        $password = "Aa123";
+                        $usertable="enquiry";
+                        
+                        $conn = mysqli_connect($servername, $username, $password, $database);
+                        
+                        // Check connection
+                        
+                        if (!$conn){
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                            
+                            $job_number= $_POST["Job's number"];
+                            $job_name= $_POST["Job's name"];
+                            $job_requires= $_POST["The Job requires"];
+                            $job_creator=$_POST["Job's creator"];
+                            $job_type=$_POST["Job's type"];
+                            $department=$_POST["department"];
+                            $job_open_date=date("Y-m-d");
+                            $description=$_POST["Job's details"];
+                            
+                            
+                            $sql="INSERT INTO job (job_number,job_name,job_requires,job_creator, job_type,department,job_open_date,description ) values ('".$job_number."','".$job_name."','".$job_requires."','".$job_creator."','".$job_type."','".$department."','".$job_open_date."','".$description."' );";
+                                 //$result = $conn->query($sql);
+                            
+                                // if successfully updated. 
+                               if ($conn->query($sql) === TRUE) {
+                                       
+                                     echo  "<script> window.alert ('Your new job has been saved');
+                                     window.location='../jobList/jobMenu.PHP';
+                                     </script>";
+                                    } 
+                        }
 
                         ?>
 						
