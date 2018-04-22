@@ -46,7 +46,7 @@
                         
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
-                                echo'<form class="" method="post" action="watchEmployee.php">
+                                echo'<form class="" method="post" action="updateEmployee.php">
                                     <h3>Create New Employee</h3>
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 lables" >Name
@@ -175,26 +175,7 @@
                                 </form>';
                             }
                         }
-                       
-                        $name = $_POST['name'];
-                        $adress = $_POST['adress'];
-                        $phone_number = $_POST['phone_number'];
-                        $family_status = $_POST['family_status'];
-                        $gender = $_POST['gender'];
-                        $job = $_POST['job'];
-                        $department = $_POST['department'];
-                        $manager = $_POST['manager'];
-                        $salary = $_POST['salary'];
-                        $start_date = $_POST['start_date'];
-                        $email = $_POST['email'];
 
-                         $sql ="UPDATE `employee` SET `name`='".$name."',`adress`='".$adress."',`phone`='".$phone_number."',`family_status`= '".$family_status."',`gender`='".$gender."',`job`='".$job."',`department`='".$department."',`manager`='".$manager."',`salary`='".$salary."',`start_date`='".$start_date."',`email`='".$email."' WHERE `id`=".$id_emp."'";
-
-                        $result = $conn->query($sql);
-
-                        if($result){
-                            echo 'Update new employee complete!';
-                        }
                         $conn->close();
                     ?>
                     </div>
