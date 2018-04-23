@@ -1,0 +1,30 @@
+h3{ display: block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;}
+    
+#save{ 
+   position:relative;
+   top:8px;
+    display:block;
+    margin: 0 auto;
+    
+    
+}
+.btn{
+    font-family: cursive;
+    font-size: 1.2rem;
+}
+
+
+textarea{ margin-top:20px;
+    margin-bottom:30px;
+    display:block;
+    margin: 0 auto;
+}
+
+.row {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
