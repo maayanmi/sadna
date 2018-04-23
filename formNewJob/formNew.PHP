@@ -4,11 +4,13 @@
                 
      $is_update = $_GET["is_update"] ;
 
-    if ($is_update == true){
+    if ($is_update == "true"){
+        
         $submit_button = "Update";
         $page_title = "Update Job";
     }
     else{
+        
         $submit_button = "Save";
         $page_title = "Create New Job";
     }
@@ -159,7 +161,7 @@
                         </div>
                         
                         <?php
-                            echo '<div class="save"><input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" ' . $submit_button . 'onClick="validate()"><input type="hidden" name="button_pressed" value="2" </div>'
+                            echo '<div class="save"><input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" value=" ' . $submit_button . '"  onClick="validate()"><input type="hidden" name="button_pressed" value="2"> </div>'
                         ?>
                         
                         
