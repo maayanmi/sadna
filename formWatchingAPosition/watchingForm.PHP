@@ -74,6 +74,13 @@
                         
                          $conn->close();
                     ?>
+                            
+                            
+                            
+                               <div class="update">
+                                    <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
+                                    <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=true'">Update</button></div>
+                                </div>
                         </form>
                         
                         <!---form of uploading cv -->
