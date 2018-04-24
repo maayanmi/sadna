@@ -60,8 +60,8 @@
                         if (!$conn){
                             die("Connection failed: " . mysqli_connect_error());
                         }
-                        
-                        $sql="SELECT job_name, job_type, description, job_requires FROM job WHERE job_number=('$id_row')";
+                            
+                        $sql="SELECT job_name, job_type, description, job_requires FROM job WHERE job_number=" . $id_row;
                         $result= $conn->query($sql); 
                         
                         if ($result->num_rows > 0) {
@@ -76,15 +76,16 @@
                     ?>
                             
                             
-                            
-                               <div class="update">
-                                    <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
-                                    <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=true'">Update</button></div>
-                                </div>
+                    <?php
+                         echo '<div class="update">
+                           <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href=\'../formNewJob/formNew.PHP?is_update=true&job_num=' . $id_row . "'\">Update</button></div>";
+                    ?>
+                               
+                             
                         </form>
                         
                         <!---form of uploading cv -->
-                            <form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
+                        <form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
                             Select CV upload (PDF only):
                             <input type="file" name="fileToUpload" id="fileToUpload">
                             <input type="submit" value="Upload" name="submit">
