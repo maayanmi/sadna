@@ -97,11 +97,12 @@
                                          <th>Department </th>
                                          <th>Number </th>
                                          <th>View</th>
+                                         <th>Publish</th>
                                         </tr>";
 										 // output data of each row 
 										 
 							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td id='job_".$row["job_number"]."'>" .$row["job_number"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td></tr>";
+									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td id='job_".$row["job_number"]."'>" .$row["job_number"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td>". "<input id='publish_".$row["job_number"]."' class='publish-position' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
 								}
 								echo "</table>";
 							}
@@ -117,11 +118,24 @@
 						$('.update-allocation').click(function (event) {
                             
 							var job_num = event.target.id;
-							 window.location="../formWatchingAPosition/watchingForm.PHP?job_num="+job_num;
+				            window.location="../formWatchingAPosition/watchingForm.PHP?job_num="+job_num;
                         })
                         });
                                                       
 						</script>
+                    
+                  <!----  <script>
+						$(document).ready(function () {
+						$('.publish-position').click(function (event) {
+                            
+							var job_num = parseInt((event.target.id).split('_')[1]);
+                            
+							 window.location="../formWatchingAPosition/watchingForm.PHP?job_num="+job_num;
+                            
+                        })
+                        });
+                                                      
+						</script>--->
 
                     
                      <div class="create">

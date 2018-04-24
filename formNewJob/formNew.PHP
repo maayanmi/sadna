@@ -268,7 +268,6 @@
                                 $sql = '';
                                 if ($is_update == "true"){
                                     $sql = "UPDATE job set job_name='" . $job_name . "' ,job_requires='" . $job_requires . "' ,job_creator='" . $job_creator . "' ,job_type='" . $job_type . "' ,department='" . $department . "' ,job_open_date='" . $job_open_date . "' ,description='" . $description . "' ,job_status='" . $job_status . "' ,job_requester='" . $job_requester . "' WHERE job_number=" . $job_num;
-                                    echo 'window.alert('. $sql.')';
                                      if($conn->query($sql) === TRUE){                                     
                                          echo  "<script> alert('Job is successfully updated');
                                          window.location='../jobList/jobMenu.PHP';
