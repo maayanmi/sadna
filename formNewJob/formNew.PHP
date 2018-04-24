@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+<?php 
+     session_start();
+                
+     $is_update = $_GET["is_update"] ;
+
+    if ($is_update == "true"){
+        
+        $submit_button = "Update";
+        $page_title = "Update Job";
+    }
+    else{
+        
+        $submit_button = "Save";
+        $page_title = "Create New Job";
+    }
+
+    
+    
+    ?>
 <html>
     <head>
     <meta charset="utf-8">
@@ -45,7 +64,10 @@
 				<div class="main-login main-center">
 				
 					<form class="" method="post">
-						<h3>Creat New Job</h3>
+                        <?php
+                            echo '<h3 id="mode_title">'.$page_title.'</h3>'
+                        ?>
+						
 						<div class="form-group">
 							<label for="The Job requires" class="cols-sm-2 control-label" >The Job requires
                                 <span id="req"></span></label>
@@ -138,10 +160,10 @@
                             </div>
                         </div>
                         
-                        <div class="save">
-                            <input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
-                            <input type="hidden" name="button_pressed" value="2" />
-                        </div>
+                        <?php
+                            echo '<div class="save"><input type="submit" id="button_1" class="btn btn-primary btn-lg btn-block login-button" value=" ' . $submit_button . '"  onClick="validate()"><input type="hidden" name="button_pressed" value="2"> </div>'
+                        ?>
+                        
                         
                         
                         <?php
@@ -241,3 +263,23 @@
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
+<!--
+ <script>
+                        var job_num = <?php echo $_GET["job_num"] ; ?> ;
+                        var path = "upload.php?job_id=" ;
+                        document.getElementById("myForm").action = path + job_num;
+                        </script>
+-->
+<script>
+    
+    var is_update = <?php echo $is_update; ?>;
+    if (is_update == true){
+        document.getElementById("mode_title").innerHTML = "Update Job";    
+    }
+    else{
+        document.getElementById("mode_title").innerHTML = "Create New Job";    
+    }
+    
+            
+</script>
