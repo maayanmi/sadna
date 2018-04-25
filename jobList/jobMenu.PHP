@@ -87,7 +87,7 @@
                             die("Connection failed: " . $conn->connect_error);
                         } 
 
-                            $sql = "SELECT job_name, department, job_number FROM job";
+                            $sql = "SELECT job_name, department, job_number FROM job order by department";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -95,14 +95,13 @@
                                         <tr>
                                          <th>Name </th>
                                          <th>Department </th>
-                                         <th>Number </th>
                                          <th>View</th>
                                          <th>Publish</th>
                                         </tr>";
 										 // output data of each row 
 										 
 							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td id='job_".$row["job_number"]."'>" .$row["job_number"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td>". "<input id='publish_".$row["job_number"]."' class='publish-position' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
+									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td>". "<input id='publish_".$row["job_number"]."' class='publish-position' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
 								}
 								echo "</table>";
 							}
@@ -122,20 +121,28 @@
                         })
                         });
                                                       
-						</script>
+                    </script>
                     
-                  <!----  <script>
-						$(document).ready(function () {
-						$('.publish-position').click(function (event) {
-                            
-							var job_num = parseInt((event.target.id).split('_')[1]);
-                            
-							 window.location="../formWatchingAPosition/watchingForm.PHP?job_num="+job_num;
-                            
-                        })
+                    <script>
+                        $('.publish-position').click (function (event) {
+
+                          var job_num = parseInt (event.target.id.split ('_')[1]);
+
+                          $.ajax ({
+                            type: "POST",
+                            url: "../formWatchingAPosition/publish.php",
+                            data: {
+                              job_num: job_num
+                            }
+                          })
+                          .done (function () {
+                            alert ('Job published successfully!');
+                          })
+                          .fail (function () {
+                            alert ('Failed publishing job !');
+                          });
                         });
-                                                      
-						</script>--->
+                  </script>
 
                     
                      <div class="create">

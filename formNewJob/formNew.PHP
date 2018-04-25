@@ -219,13 +219,15 @@
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <?php
-                                        echo '<select name="job_status" class="form-control"  id="job_status" value="' . $job_status . '" required><optgroup label="options">
+<!--                                    <optgroup label="options">-->
+                                      <?php
+                                        echo '<select name="job_status" class="form-control"  id="job_status" required><optgroup label="options">
                                             <option>Approved</option>
                                             <option>Declined</option>
                                         </optgroup>
                                         </select>';
                                     ?>
+<!--                                    </optgroup>-->
                                 </div>            
                             </div>
                         </div>
@@ -360,8 +362,6 @@
 
 <!--
  <script>
-                        var job_num = <?php echo $_GET["job_num"] ; ?> ;
-                        var path = "upload.php?job_id=" ;
-                        document.getElementById("myForm").action = path + job_num;
-                        </script>
+    $("select[name='status']").val();
+</script>
 -->
