@@ -22,7 +22,6 @@
 	
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
-        <!--<link rel="stylesheet" href="../css">-->
          
         
     </head>
