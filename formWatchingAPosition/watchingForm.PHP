@@ -12,25 +12,55 @@
 
 <html>
     <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-    	<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-        <link rel="stylesheet" href="../homePage/homePage.css" >
-        <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
-         
+    <title>Watch A Position</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Header and Footer bootstrap css -->
+   <link rel="stylesheet" href="../CSS/headerFooter.css" >
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>   
+    <![endif]-->
+    <link rel="stylesheet" href="formWatchingStyle.CSS" >
+    <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+    <link rel="stylesheet" href="../homePage/homePage.css" >
+    <link rel="stylesheet" href="../employeesPage/newEmployeeStyle.css" >
+
         
     </head>
     
     <body>
-        <header>       
+      <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
             <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="#">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
       
 <!-------------MAIN--------------->
@@ -73,29 +103,29 @@
                         
                          $conn->close();
                     ?>
-                            
-                            
-                    <?php
-                         echo '<div class="update">
-                           <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href=\'../formNewJob/formNew.PHP?is_update=true&job_num=' . $id_row . "'\">Update</button></div>";
-                    ?>
-                               
-                             
-                        </form>
-                        
-                        <!---form of uploading cv -->
-                        <form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
+                          
+                    <!---form of uploading cv -->
+                        <br><form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
                             Select CV upload (PDF only):
                             <input type="file" name="fileToUpload" id="fileToUpload">
-                            <input type="submit" value="Upload" name="submit">
+                            <input type="submit" value="Upload" name="submit" id="uploadButton">
                         </form>
-
-
+                              
+                            
+                    <?php
+                         echo '<button type="button" class="btn login-button" id="updateButton" onclick="window.location.href=\'../formNewJob/formNew.PHP?is_update=true&job_num=' . $id_row . "'\">Update</button></div>";
+                    ?>
+                            
+                    
                         <script>
                         var job_num = <?php echo $_GET["job_num"] ; ?> ;
                         var path = "upload.php?job_id=" ;
                         document.getElementById("myForm").action = path + job_num;
                         </script>
+                             
+                        </form>
+                                               
+
                         
                     </div>
                 </div>

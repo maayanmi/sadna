@@ -35,16 +35,6 @@ h3{
     text-align: center;
 }
 
-.create{
-    float:left;
-    margin-bottom: 5px;
-}
-
-.buttonList{
-    float: left;
-    margin-left: 10px;
-}
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -67,4 +57,9 @@ th{
     color:#eaeae1;
     font-weight: 600;
     background-color:#428bca;
+}
+
+.btn btn-primary{
+    position: relative;
+    margin-left: 20px;
 }

@@ -1,23 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Jobs Menu</title>
-        
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-        
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jobs Menu</title>
+      
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Header and Footer bootstrap css -->
+   <link rel="stylesheet" href="../CSS/headerFooter.css" >
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>   
+    <![endif]-->
          <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
         <link rel="stylesheet" href="jobMenuStyle.CSS">
     </head>
     <body>
-        <header>       
-            <img id ="logo" src = "../homePage/logo.png">
-            <img id ="home" src = "../homePage/home.png" href = "#">
-            <img id ="logOut" src = "../homePage/logOut.png" href = "#">
+      <header>       
+            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
+            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
+            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="#">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
         
         <!-- Modal -->
@@ -145,14 +173,14 @@
                   </script>
 
                     
-                     <div class="create">
-                        <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button></div>
-                    </div>
+                     
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button></div>
+                        </div>
                     
-                      <div class="buttonList">
-                        <!--div class="col-md-5 col-sm-5 col-xs-5"></div>-->
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button></div>
+                         
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <button type="button" id="view" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button></div>
                     </div>
                     
                 </div>
@@ -160,34 +188,35 @@
             </div>
         </main>
 <!------------FOOTER--------------->
-        <footer class="footer-distributed">
+   <footer class="footer-distributed">
             <div class="footer-style">
               <div class="footer-center">
-                  <div>
+                <div>
                     <i class="fa fa-map-marker"></i>
-                      <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
-                  </div>
+                    <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
+                </div>
 
-                  <div>
+                <div>
                     <i class="fa fa-phone"></i>
                     <p>+972 50 6996868 </p>
-                  </div>
+                </div>
 
-                  <div>
+                <div>
                     <i class="fa fa-envelope"></i>
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
-                  </div>
                 </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "employeesMenu.html">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
+               </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>
