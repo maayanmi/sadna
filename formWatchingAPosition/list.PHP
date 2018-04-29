@@ -105,8 +105,8 @@
 											 $path ="uploads/{$job_id}/";
 											 $filename =$row["file"] ;
 											 
-											 
-											 echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='?file={$path}{$filename}' >". $filename ."</a><br></br>" . "</td></tr>"; 
+											                                  
+                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='?file={$path}{$filename}' style='color:#001a4d' >". $filename ."</a><br></br>" . "</td></tr>";
 											 
 											 if (isset($_GET['file'])) {
 

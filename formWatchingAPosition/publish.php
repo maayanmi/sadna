@@ -41,7 +41,7 @@
         }
     }
     
-    $mails= new array();
+    /*$mails= new array();
     $sql_1="SELECT email FROM employee";
     $result= $conn->query($sql_1);
 
@@ -50,12 +50,12 @@
             $email = $row["email"];
             array_push($mails, email);
             }
-    }
+    }*/
 
     $conn->close();
 
-    $addressee = implode(",", $mails);
-    /*$addressee = 'hr4ualgosec@gmail.com';*/
+    /*$addressee = implode(",", $mails);*/
+    $addressee = 'hr4ualgosec@gmail.com';
     $subject = 'New Position';
     $message = $job_requester. " from " . $department . " department has published a new position - " .$job_name . "\n\nJob's description: \n" . $job_description;
     $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
