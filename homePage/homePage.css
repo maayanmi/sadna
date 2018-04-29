@@ -26,19 +26,20 @@
     margin-left: 5px;
 }
 
-#home{
-    width:30px;
-    height: 30px;
+#home {
+    width: 27px;
+    height: 27px;
     float: right;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: 19px;
 }
 
-#logOut{
-    width:40px;
-    height: 40px;
+#logOut {
+    width: 35px;
+    height: 35px;
     float: right;
     margin-right: 5px;
+    margin-top: 15px;
 }
 header{
     display: block;
@@ -50,53 +51,68 @@ header{
     float:right;
     width: 130px;
     height: 120;
-    padding-top: 10%;
+    margin-right: 20px;
 }
 
 <!--SIDENAV-------------------->
 
 body {
-    font-family: "Lato", sans-serif;
-    color: #bfc3c7;
+    font-family: 'Arimo', sans-serif;
+    padding-top: 50px;
+    color:white;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #292c2f;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
+.menu-bar {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    top: 30px;    
+    left: 14%;/*left: 50%;*/
+    height: 14px;
+    margin-left: -10px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.bars {
+    display: block;
+    width: 20px;
+    height: 3px;    
+    background-color: white;
+    box-shadow: 0 5px 0 white, 0 10px 0 white;
+}
+
+.menu {
+    display: none; 
+    width: 100%;
+    /*padding: 30px 10px 50px;*/
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+}
+.menu ul {
+    margin-bottom: 0;
+}
+.menu a {
+    color: white; 
+    text-transform: uppercase;
+    opacity: 0.8;
+    padding-left: 10px;
+}
+.menu a:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.list-inline{
+    background-image:none;
+     background-color:#131415;
+     opacity:0.9;
+     height:auto;
+     margin: 0;
+     text-align:center;
+     font-size:14px;
+     padding:0;
+}
+
+.collapse menu{
+    
 }
 
 <!--MAIN_MENU-------------------->
@@ -106,16 +122,20 @@ body {
    position: absolute;
 }
 
+#menu{
+    margin:0;
+}
+
 /* ~~~~~~~ INIT. BTN ~~~~~~~ */
 ul {
     list-style-type: none;
-    padding-left: 35%;
-    background-image: url("background4.jpg"); 
+    padding-left: 40%;
+    background-image: url(background4.jpg);
     opacity: 0.7;
     background-repeat: repeat-y;
     margin: 0;
-    height:355px;
-    padding-top:60px;
+    height: 400px;
+    padding-top: 100px;
 }
 
 .btn {		
@@ -197,8 +217,12 @@ html {
 	font-family: 'Playfair Display', serif;
 }
 
-div {margin-bottom: 1rem;}
+/*div {margin-bottom: 1rem;}*/
+
+div:last-child {margin-bottom: 0;}
+
 div:last-child {margin-bottom: 0px; }
+
 
 <!--FOOTER -------------------->
 
@@ -217,7 +241,7 @@ div:last-child {margin-bottom: 0px; }
 	text-align: left;
 	font: bold 16px;
     font-family: sans-serif;
-    padding: 30px 30px 0px 30px;
+    padding: 15px 30px 0px 30px;
 }
 
 
@@ -277,6 +301,7 @@ div:last-child {margin-bottom: 0px; }
 
 .footer-distributed .footer-center{
 	width: 35%;
+	padding-left: 30px;
 }
 
 .footer-distributed .footer-center i{
@@ -305,13 +330,13 @@ div:last-child {margin-bottom: 0px; }
 	vertical-align: middle;
     font-family:cursive;
 	margin:0;
-    font-size:18px;
+    font-size:16px;
 }
 
 .footer-distributed .footer-center p span{
 	display:block;
 	font-weight: normal;
-	font-size:18px;
+    font-size: 16px;
 	line-height:2;
     font-family:cursive;
 }
