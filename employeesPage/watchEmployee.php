@@ -11,6 +11,17 @@
         
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <!-- Sidenav bootstrap css -->
+      
+            <!-- Bootstrap Footer Social icons -->
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
+      <!--/ Bootstrap Footer Social icons -->
+        
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         
@@ -23,7 +34,19 @@
         <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" ></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
+                    <li><a href="../emloyeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="#">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
       
 <!-------------MAIN--------------->
@@ -67,7 +90,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="adress" class="cols-sm-2 control-label">Adress <span id="req"></span></label>
+                                                <label for="adress" class="cols-sm-2 control-label">Address <span id="req"></span></label>
                                                 <div class="inputs">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -176,10 +199,10 @@
                                                 </div>
                                             </div> 
 
-                                            <input type="hidden" name="id_emp" value="'.$id_emp.'"> 
                                             <div class="save">
-                                                <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Update" name="update" onClick="validate()">
+                                                <input type="submit" id="button" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Update" name="update" onClick="validate()">
                                             </div>
+                                            <input type="hidden" name="id_emp" value="'.$id_emp.'"> 
                                         </form>';
 
                                     }
@@ -248,16 +271,17 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                 </div>
                </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "#">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>

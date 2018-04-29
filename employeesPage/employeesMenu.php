@@ -7,6 +7,16 @@
     <head>
         <title>Employees Menu</title>
         
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <!-- Sidenav bootstrap css -->
+      
+            <!-- Bootstrap Footer Social icons -->
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
+      <!--/ Bootstrap Footer Social icons -->
+        
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -20,7 +30,19 @@
         <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" ></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
+                    <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="#">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
         <script>
             function setID(id_emp) { 
@@ -82,32 +104,7 @@
                                 $sql = "SELECT * FROM employee WHERE department = '".$emp_department."' 
                                 AND name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
                                 $result = $conn->query($sql);
-
-<<<<<<< HEAD
-                            if ($result->num_rows > 0) {
-                                echo '<table>
-                                        <tr>
-                                         <th>Name </th>
-                                         <th>Department </th>
-                                         <th> </th>
-                                        </tr>';
-										 // output data of each row 
-										 
-							    while($row = $result->fetch_assoc()) { 
-                                    $emp_id = $row["id"];
-									echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                    <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
-								}
-								echo "</table>";
-										 
-							}
-							else{
-                            echo 
-                                '<div class="alert alert-info">
-                                <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
-                                <strong>Info:</strong>No Result Found</div>';
-=======
+                                
                                 if ($result->num_rows > 0) {
                                     echo '<table>
                                             <tr>
@@ -120,8 +117,8 @@
                                     while($row = $result->fetch_assoc()) {
                                         $emp_id = $row["id"];
                                         echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
+                                        <button type='button' style='color:black;background-color: #a8a8ad;border-bottom-color: grey;font-family: arial, sans-serif;' class='btn' onclick = 'setID($emp_id)'>Watch</button></div>
+                                    </td></tr>"; 
                                     }
                                     echo "</table>";
 
@@ -132,7 +129,6 @@
                                     <a href="employeesMenu.php" class="btn btn-xs btn-primary pull-right" onclick="javascript:window.close()">close</a>
                                     <strong>Info:</strong>No Result Found</div>';
                                 }
->>>>>>> employeesPage
                             }
                             //if there is only deprtment
                             else if(empty($emp_name) && !empty($emp_department)){
@@ -151,8 +147,8 @@
                                     while($row = $result->fetch_assoc()) {
                                         $emp_id = $row["id"];
                                         echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>";
+                                        <button type='button' style='color:black;background-color: #a8a8ad;border-bottom-color: grey;font-family: arial, sans-serif;' class='btn' onclick = 'setID($emp_id)'>Watch</button></div>
+                                     </td></tr>";
                                     }
                                     echo "</table>";
 
@@ -181,8 +177,8 @@
                                     while($row = $result->fetch_assoc()) {
                                         $emp_id = $row["id"];
                                         echo "<tr><td>" . $row["name"]. "</td><td>" . $row["department"]. "</td><td> 
-                                        <button type='button' class='watch btn btn-primary' onclick = 'setID($emp_id)'>Watch</button></div>
-                                    <div class='col-md-5 col-sm-5 col-xs-35'> </td></tr>"; 
+                                        <button type='button' class='btn' style='color:black;background-color: #a8a8ad;border-bottom-color: grey;font-family: arial, sans-serif;' onclick = 'setID($emp_id)'>Watch</button></div>
+                                     </td></tr>"; 
                                     }
 
                                     echo "</table>";
@@ -204,15 +200,17 @@
                         }
                         
                     ?>
-                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick='window.location.href="newEmployee.html"'>Add New Employee</button></div>
-                </div>
                     
+                     <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick='window.location.href="newEmployee.php"'>Add New Employee</button></div>
+                    </div>
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-3">
                             <button type="button" class="btn btn-primary" onclick="window.location='mbo.php'">Create MBO Report</button></div>
                         <div class="col-md-5 col-sm-5 col-xs-35"></div>
                     </div>
                 </div>
+            </div>
             </div>
         </main>
 <!------------FOOTER--------------->
@@ -234,16 +232,17 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                   </div>
                 </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "employeesMenu.html">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>
