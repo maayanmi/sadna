@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Evaluation</title>
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <!-- Sidenav bootstrap css -->
       
-            <!-- Bootstrap Footer Social icons -->
+      <!-- Bootstrap Footer Social icons -->
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
       <!--/ Bootstrap Footer Social icons -->
@@ -41,6 +41,24 @@
                 <div class="row main" >
 				    <div class="main-login main-center">
                 <!-------your main here-------->
+                    <?php
+                        /*if ($permission == 1) //for hr manger*/
+                        {
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
+
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+                            
+                            
+                            $conn->close();
+                    ?>
                     </div>
                 </div>
             </div>
