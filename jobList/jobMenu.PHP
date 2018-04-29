@@ -100,8 +100,8 @@
 			 <div class="row main" >
 				<div class="main-login main-center">
                     <h3>Jobs</h3>
-               
-                  <div class="col-md-2 col-sm-2 col-xs-3"></div>
+            
+                  <!--<div class="col-md-2 col-sm-2 col-xs-3"></div>-->
                     <?php
                         $servername = "localhost";
                         $database = "maayanmi_hr4u";
@@ -172,20 +172,11 @@
                         });
                   </script>
 
-                    
-                     
-                        <div class="col-md-2 col-sm-2 col-xs-3">
-                            <button type="button" class="btn btn-primary" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button></div>
-                        </div>
-                    
-                         
-                        <div class="col-md-2 col-sm-2 col-xs-3">
-                            <button type="button" id="view" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button></div>
-                    </div>
-                    
-                </div>
-            </div>
-            </div>
+                        <br><button type="button" class="btn btn-primary" id="createJob" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button>
+                        
+                                     
+                        <button type="button" id="view" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button>
+          
         </main>
 <!------------FOOTER--------------->
    <footer class="footer-distributed">
