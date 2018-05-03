@@ -103,12 +103,31 @@
                         
                          $conn->close();
                     ?>
-                          
+                          </form>
+                        
                     <!---form of uploading cv -->
                         <br><form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
                             Select CV upload (PDF only):
-                            <input type="file" name="fileToUpload" id="fileToUpload">
-                            <input type="submit" value="Upload" name="submit" id="uploadButton">
+                            <input type="file" name="fileToUpload" id="fileToUpload" style="   color: black;
+    border: 1px solid #ccc;
+    margin-top: 28px;
+    padding: 6px 12px;
+    width: fit-content;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    border-radius: 3px 3px;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%)">
+                            <input type="submit" value="Upload" name="submit" id="uploadButton" style="   color: black;
+    border: 1px solid #ccc;
+    margin-top: 2px;
+    padding: 6px 12px;
+    width: fit-content;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    border-radius: 3px 3px;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%)">
                         </form>
                               
                             
@@ -121,13 +140,10 @@
                         var job_num = <?php echo $_GET["job_num"] ; ?> ;
                         var path = "upload.php?job_id=" ;
                         document.getElementById("myForm").action = path + job_num;
-                        </script>
-                             
-                        </form>
-                                               
+                        </script>                              
 
                         
-                    </div>
+                  </div>
                 </div>
             </div>
         </main>
