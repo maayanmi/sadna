@@ -55,7 +55,7 @@
     $conn->close();
 
     /*$addressee = implode(",", $mails);*/
-    $addressee = 'hr4ualgosec@gmail.com';
+    $addressee = 'hr4ualgosec@gmail.com,algosecemp@gmail.com';
     $subject = 'New Position';
     $message = $job_requester. " from " . $department . " department has published a new position - " .$job_name . "\n\nJob's description: \n" . $job_description;
     $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .

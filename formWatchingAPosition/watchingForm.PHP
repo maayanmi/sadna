@@ -5,13 +5,16 @@
     <?php 
      session_start();
                 
-     $id_row = $_GET["job_num"] ;
+    $id_row = $_GET["job_num"] ;
+    $email=$_SESSION["email"];
+    $permission = $_SESSION["permission"];
     
     ?>
         
 
 <html>
     <head>
+    <script> var permission = <?php echo $permission ; ?> ; </script>
     <title>Watch A Position</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +51,7 @@
       <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -110,7 +113,6 @@
                             Select CV upload (PDF only):
                             <input type="file" name="fileToUpload" id="fileToUpload" style="   color: black;
     border: 1px solid #ccc;
-    margin-top: 28px;
     padding: 6px 12px;
     width: fit-content;
     text-shadow: 0 1px #fff;
@@ -132,8 +134,15 @@
                               
                             
                     <?php
-                         echo '<button type="button" class="btn login-button" id="updateButton" onclick="window.location.href=\'../formNewJob/formNew.PHP?is_update=true&job_num=' . $id_row . "'\">Update</button></div>";
+                         echo '<button type="button" class="btn login-button" style="display:none" id="updateButton" onclick="window.location.href=\'../formNewJob/formNew.PHP?is_update=true&job_num=' . $id_row . "'\">Update</button></div>";
                     ?>
+                        <script>
+              
+                if (permission == 1) //for hr manager
+                    {
+                        $('#updateButton').show(0);
+                    }    
+          </script>  
                             
                     
                         <script>
