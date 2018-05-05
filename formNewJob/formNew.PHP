@@ -291,7 +291,9 @@
                                          </script>";
                                     }
                                     else {
-                                        // TODO: treat 
+                                         echo  "<script> alert('There was a problen updating the job, please try again');
+                                         window.location='../formNewJob/formNew.PHP';
+                                         </script>"; 
                                     }
                                 }
                                 else{
@@ -304,25 +306,6 @@
                                 }
 
                                 
-                                     //$result = $conn->query($sql);
-                            
-                            
-                            // if successfully updated. 
-                                   //if ($conn->query($sql) === TRUE) {}
-
-//                                    $addressee      = 'hr4ualgosec@gmail.com';
-//                                    $subject = 'New Position';
-//                                    $message = "Hello, a new position has been added to " . $department . " department. You can view it in the job list";
-//                                    $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
-//                                        'Reply-To: webmaster@example.com' . "\r\n" .
-//                                        'X-Mailer: PHP/' . phpversion();
-//
-//                                       mail($addressee, $subject, $message, $headers);
-//                            
-//                                         echo  "<script> window.alert ('Your new job has been saved, and sent on mail');
-//                                         window.location='../jobList/jobMenu.PHP';
-//                                         </script>";
-//                                        } 
                         }
 
                         ?>
