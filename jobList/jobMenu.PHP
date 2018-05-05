@@ -47,7 +47,7 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
                     <li><a href="#">Evaluations</a></li>
                 </ul>   

@@ -15,14 +15,16 @@
      $job_status = '';
      $description = '';
 
+     $servername = "localhost";
+     $database = "maayanmi_hr4u";
+        $username = "maayanmi_eyal";
+        $password = "Aa123";
+
     if ($is_update == "true"){
         $submit_button = "Update";
         $page_title = "Update Job";
         
-        $servername = "localhost";
-        $database = "maayanmi_hr4u";
-        $username = "maayanmi_eyal";
-        $password = "Aa123";
+        
         $usertable="enquiry";
         // Create connection
 
@@ -108,7 +110,7 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
                     <li><a href="#">Evaluations</a></li>
                 </ul>   
@@ -171,14 +173,31 @@
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-</span>
                                     <?php
-                                    echo '<select name="job_type" class="form-control"  id="job_type" value="' . $job_type . '" required selected><optgroup label="options">
-                                        <option>Full time job</option>
-                                        <option>Part time job</option>
-                                    </optgroup>
-                                    </select>';
+                                    
+                                    // Create connection
+
+                                    $conn = mysqli_connect($servername, $username, $password, $database);
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    } 
+                                    $sql_2="SELECT distinct(job_type) FROM job";
+                                    $result_2 = mysqli_query($conn, $sql_2);
+                                    echo '<select name="job_type" class="form-control" id="job_type" required>';
+                                    
+                                    while($row_2 = mysqli_fetch_assoc($result_2)) {
+                                        if($row_2['job_type'] == $job_type){
+                                            echo "<option value='".$row_2['job_type']."' selected>".$job_type."</option>";
+                                        }
+                                        else{
+                                            echo "<option value='".$row_2['job_type']."'>".$row_2['job_type']."</option>";
+                                        }
+                                    }
+                                    echo '</select>';
+                                    $conn->close();
                                     ?>
+
+</span>
                                 </div>            
                             </div>
                         </div>
@@ -229,20 +248,36 @@
                         </div>
                                  
                         <div class="form-group">
-                            <label for="family_status">Job Status</label>
+                            <label for="job_status">Job Status</label>
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 </span>
-<!--                                    <optgroup label="options">-->
-                                      <?php
-                                        echo '<select name="job_status" class="form-control"  id="job_status" required><optgroup label="options">
-                                            <option>Approved</option>
-                                            <option>Declined</option>
-                                        </optgroup>
-                                        </select>';
+
+                                <?php
+                                    
+                                    // Create connection
+
+                                    $conn = mysqli_connect($servername, $username, $password, $database);
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    } 
+                                    $sql_2="SELECT distinct(job_status) FROM job";
+                                    $result_2 = mysqli_query($conn, $sql_2);
+                                    echo '<select name="job_status" class="form-control" id="job_status" required>';
+                                    
+                                    while($row_2 = mysqli_fetch_assoc($result_2)) {
+                                        if($row_2['job_status'] == $job_status){
+                                            echo "<option value='".$row_2['job_status']."' selected>".$job_status."</option>";
+                                        }
+                                        else{
+                                            echo "<option value='".$row_2['job_status']."'>".$row_2['job_status']."</option>";
+                                        }
+                                    }
+                                    echo '</select>';
+                                    $conn->close();
                                     ?>
-<!--                                    </optgroup>-->
+
                                 </div>            
                             </div>
                         </div>
@@ -258,10 +293,6 @@
                         if(isset($_POST['button_pressed']))
                         {
                               
-                            $servername = "localhost";
-                            $database = "maayanmi_hr4u";
-                            $username = "maayanmi_eyal";
-                            $password = "Aa123";
                             $usertable="enquiry";
                         
                             $conn = mysqli_connect($servername, $username, $password, $database);
