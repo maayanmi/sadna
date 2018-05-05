@@ -106,12 +106,18 @@
 											 $filename =$row["file"] ;
 											 
 											                                  
-                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='?file={$path}{$filename}' style='color:#001a4d' >". $filename ."</a><br></br>" . "</td></tr>";
+                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' >". $filename ."</a><br></br>" . "</td></tr>";
+										 }
+									
 											 
-											 if (isset($_GET['file'])) {
-
+							/* remove
+										 
+										 		 if (isset($_GET['file'])) {
+                                                
                                                 $file = $_GET["file"];
                                                 $name = basename($file) ;
+                                                
+                                                
                                                 header("Content-type:application/pdf");
                                                 
                                                 // It will be called downloaded.pdf
@@ -121,16 +127,12 @@
                                                 readfile("$file");
                                                 
                                     
-                                      }
-											 
-											 
-											 
-											 
-										 }
+                                      } */
+										 
 										 echo "</table>";
-										 
-										 
-									} else{
+									} 
+									
+									else{
                                         echo "00000";
                                         }
 
@@ -182,3 +184,6 @@ $conn->close();
         </script>
     </body>
 </html>
+
+
+

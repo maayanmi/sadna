@@ -146,11 +146,3 @@ padding: 4px;
     box-shadow: 0 1px #fff inset, 0 1px #ddd;
     background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
 }
-
-#uploadButton{
-    color: black;
-}
-
-#fileToUpload{
-    color: black;
-}

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+ 
+ ?>
 <html>
     <head>
+        <script> var permission = <?php echo $permission ; ?> ; </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +39,7 @@
       <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -47,53 +53,7 @@
                 </ul>   
         	</div>
         </header>
-        
-        <!-- Modal -->
-<!--
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
--->
-    
-      <!-- Modal content-->
-<!--
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 id="modaltitle" class="modal-title">Job Details:</h4>
-        </div>
-        <div class="modal-body">
-          <p id="modalbody">Some text in the modal. </p>
-        </div>
-        <div class="modal-footer">
-        
-        
-        
-          <button id="b_open" type="button" class="btn btn-primary" style="display: none;">Response</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
--->
-      <!----    <script>
               
-                if (permission == 1){
-                 $('#b_open').show(0);}    
-          </script>----->
-         
-<!--
-         <script>
-            var job_num;
-           
-            $("#myModal").on('shown.bs.modal', function () {
-
-                $('#b_open').focus();
-                $('#b_open').click(function (event) {
-                     window.location="watchingForm.php?job_num="+job_num;
-                
-                    });
-                });
-					
-        </script>
--->
-        
-      
 <!-------------MAIN--------------->
         <main>
              <div class="container"  >
@@ -124,12 +84,12 @@
                                          <th>Name </th>
                                          <th>Department </th>
                                          <th>View</th>
-                                         <th>Publish</th>
+                                         <th id='publishCol' style='display:none'>Publish</th>
                                         </tr>";
 										 // output data of each row 
 										 
 							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td>". "<input id='publish_".$row["job_number"]."' class='publish-position' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
+									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td id='colPublish' style='display:none'>". "<input id='publish_".$row["job_number"]."' class='publish-position' style='display:none' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
 								}
 								echo "</table>";
 							}
@@ -138,6 +98,16 @@
                     
                         $conn->close();
                     ?>
+                    
+                      <script>
+              
+                if (permission == 1) //for hr manager
+                    {
+                        $('#publishCol').show(0)
+                        $('#colPublish').show(0)
+                        $('#publish_').show(0);
+                    }    
+          </script>
                     
 
                    <script>
@@ -172,11 +142,20 @@
                         });
                   </script>
 
-                        <br><button type="button" class="btn btn-primary" id="createJob" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button>
-                        
+                        <br><button type="button" style="display: none" class="btn btn-primary" id="createJob" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button>
+                         <script>
+              
+                        if (permission == 1){
+                        $('#createJob').show(0);}    
+                        </script>
                                      
-                        <button type="button" id="view" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button>
-          
+                        <button type="button" id="view" style="display: none" class="btn btn-primary" onclick="window.location.href='../formWatchingAPosition/list.PHP'">View Candidates</button>
+                        <script>
+              
+                        if (permission == 1){
+                        $('#view').show(0);}    
+                        </script>
+                    
         </main>
 <!------------FOOTER--------------->
    <footer class="footer-distributed">
