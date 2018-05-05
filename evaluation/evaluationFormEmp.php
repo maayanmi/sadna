@@ -89,6 +89,7 @@
 						</div>
 						
 					</form>     
+<!--
                    <?php
                         /*if ($permission == 1) //for hr manger*/
                         {
@@ -107,6 +108,7 @@
                             
                             $conn->close();
                     ?>
+-->
                     </div>
                 </div>
             </div>
