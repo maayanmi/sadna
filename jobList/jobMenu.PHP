@@ -6,7 +6,8 @@
  ?>
 <html>
     <head>
-        <script> var permission = <?php echo $permission ; ?> ; </script>
+    <link rel="icon" href="../homePage/logo.png">
+    <script> var permission = <?php echo $permission ; ?> ; </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

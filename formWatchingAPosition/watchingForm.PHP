@@ -14,6 +14,7 @@
 
 <html>
     <head>
+    <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <title>Watch A Position</title>
     <meta charset="utf-8">

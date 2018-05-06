@@ -67,6 +67,7 @@
     ?>
 <html>
 <head>
+    <link rel="icon" href="../homePage/logo.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,6 +117,38 @@
                 </ul>   
         	</div>
         </header>
+      
+      
+        <!-- Modal -->
+  <!--<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+   <!--   <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="modaltitle" class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <p id="modalbody">Some text in the modal. </p>
+        </div>
+        <div class="modal-footer">
+            
+    <button id ="b_close" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            
+      <script>
+            var id_row;
+           
+            $("#myModal").on('shown.bs.modal', function () {
+
+                $('#b_close').focus();
+                $('#b_close').click(function (event) {
+                     window.location="../jobList/jobMenu.PHP";
+                
+                    });
+                });
+					
+        </script>-->
       
 <!-------------MAIN--------------->
         
