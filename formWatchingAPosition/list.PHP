@@ -61,9 +61,6 @@
 
 <?php
 
-
-
-
                             	$servername = "localhost";
 								$database = "maayanmi_hr4u";
 								$username = "maayanmi_eyal";
@@ -80,15 +77,11 @@
 									die("Connection failed: " . mysqli_connect_error());
 								}
 								
-
-                                     
 									$sql = "SELECT `job_id`,`file`,`sender`,employee.name, job.job_name FROM `CV_upload`,job,employee WHERE job_id=job.job_number AND CV_upload.sender = employee.email";
 									$result = $conn->query($sql); 
 									
 
 									if ($result->num_rows > 0) { 
-									    
-									    
 									    
 										 echo "<div class = 'empty'>
                                                     <table>
@@ -107,7 +100,7 @@
 											 $filename =$row["file"] ;
 											 
 											                                  
-                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' >". $filename ."</a><br></br>" . "</td></tr>";
+                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
 										 }
 									
 											 
