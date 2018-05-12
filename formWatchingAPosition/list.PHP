@@ -45,7 +45,7 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
