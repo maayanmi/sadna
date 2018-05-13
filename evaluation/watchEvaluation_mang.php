@@ -3,14 +3,13 @@
 <?php session_start();
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
- $employee_id= $_SESSION["emp_id_f"];
+ $employee_id= $_SESSION["emp_id_w"];
 
  ?>
 <html>
     <head>
- 
         
-        <title>HR4U</title>
+        <title>Manager Evaluation</title><!--HR4U-->
         <link rel="icon" href="../homePage/logo.png">
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -49,13 +48,14 @@
         </header>
 <!-------------MAIN--------------->
         <main>
+
+      <!--here is emp_id paramter-->  
+
             <div class="container">
                 <div class="row main">
 				    <div class="main-login main-center">
                 <!-------your main here-------->
-
                    <?php
-                  
                          //for hr manger 
                        
                             $servername = "localhost";
@@ -68,14 +68,14 @@
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
-                            
+
                             $sql_1 = "SELECT name FROM employee WHERE id = '".$employee_id."'";
                             $result_1 = $conn->query($sql_1);
                             while($row = $result_1->fetch_assoc()) {
-                                $filled_by = $row['name'];
+                                $filled_for = $row['name'];
                             }
 
-                            $sql = "SELECT * FROM evaluation WHERE filled_by = '".$filled_by."' AND filled_for ='".$filled_by."' ";
+                            $sql = "SELECT * FROM evaluation WHERE filled_by = '".$filled_for."' AND filled_for ='".$filled_for."' ";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -121,88 +121,58 @@
                                         </form>';
                                 }
                             }
-                    ?>
-                    <form class="" method="post" action="evaluationFormMang.php">
-                        <h3>Manager Evaluation</h3>
-                        <div class="form-group">
-                            <label for="name" class="cols-sm-2 lables" >Write the main goals of the employee for the last year:
-                                <span id="req"></span></label>
-                            <div class="inputs">
-                                <div class="input-group">
-                                    <textarea rows="6" cols="100%" class="form-control" name="goals" id="goals" required></textarea>
-                                </div>
-                            </div>
-                        </div>
+                        $sql_2 = "SELECT name FROM employee WHERE email = '".$email."'";
+                        $result_2 = $conn->query($sql_2);
+                        while($row = $result_2->fetch_assoc()) {
+                            $filled_by = $row['name'];
+                        }
 
-                        <div class="form-group">
-                            <label for="adress" class="cols-sm-2 control-label">Write the main achievements of the last year of the employee: <span id="req"></span></label>
-                            <div class="inputs">
-                                <div class="input-group">
-                                    <textarea rows="6" cols="100%" class="form-control" name="achievements" id="achievements" required></textarea>
-                                </div>
-                            </div>      
-                        </div>
-						<div class="form-group">
-							<label for="phone_number" class="cols-sm-2 control-label"> Write areas in which the employee demonstrated his\hers strengths: <span id="req"></span></label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<textarea rows="6" cols="100%" class="form-control" name="strengths" id="strengths" required></textarea>
-								</div>
-							</div>
-						</div>                                 
+                        $sql_3 = "SELECT * FROM evaluation WHERE evaluation.status=2  AND filled_for = '".$filled_for."'";
+                        $result_3 = $conn->query($sql_3);
 
-                        <div class="form-group">
-							<label for="job" class="cols-sm-2 control-label"> Write areas in which there is a room for improvement: <span id="req"></span></label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<textarea rows="6" cols="100%" class="form-control" name="improvement" id="improvement" required></textarea>
-								</div>
-							</div>
-						</div> 
+                        if ($result_3->num_rows > 0) {
+                            while($row_3 = $result_3->fetch_assoc()) {
+                                echo'
+                                <form class="" method="post" action="evaluationFormManag.php">
+                                    <h3>Manager Evaluation</h3>
+                                    <div class="form-group">
+                                        <label for="name" class="cols-sm-2 lables" >Write the main goals of the employee for the last year:
+                                            <span id="req"></span></label>
+                                        <div class="inputs">
+                                            <div class="input-group">
+                                                <textarea rows="6" cols="100%" class="form-control" name="goals" id="goals" readonly>'.$row_3["goals"].'</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="adress" class="cols-sm-2 control-label">Write the main achievements of the last year of the employee: <span id="req"></span></label>
+                                        <div class="inputs">
+                                            <div class="input-group">
+                                                <textarea rows="6" cols="100%" class="form-control" name="achievements" id="achievements" readonly>'.$row_3["achievements"].'</textarea>
+                                            </div>
+                                        </div>      
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone_number" class="cols-sm-2 control-label"> Write areas in which the employee demonstrated his\hers strengths: <span id="req"></span></label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <textarea rows="6" cols="100%" class="form-control" name="strengths" id="strengths" readonly>'.$row_3["strengths"].'</textarea>
+                                            </div>
+                                        </div>
+                                    </div>                                 
 
-						<div class="save">
-                            <input type="submit" id="button" name = "submit" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
-						</div>
-					</form>   
-					
-                    <?php
-                        if(isset($_POST['submit'])){
-                            $goals = $_POST['goals'];
-                            $achievements = $_POST['achievements'];
-                            $strengths = $_POST['strengths'];
-                            $improvement = $_POST['improvement'];
-                        
-                            $sql_1 = "SELECT name FROM employee WHERE email = '".$email."'";
-                            $result_1 = $conn->query($sql_1);
-                            while($row = $result_1->fetch_assoc()) {
-                                $filled_by = $row['name'];
-                            }
-                            
-                            $sql_1 = "SELECT name, email FROM employee WHERE id = '".$employee_id."'";
-                            $result_1 = $conn->query($sql_1);
-                            while($row = $result_1->fetch_assoc()) {
-                                $filled_for = $row['name'];
-                                $email_emp = $row['email'];
-                            }
-                        
-                             $sql ="INSERT INTO `evaluation` (`evaluation_date`, `email`, `goals`, `achievements`, `strengths`, `improvement`, `status`, `filled_by`, `filled_for`) 
-                             VALUES(CURDATE(), '".$email_emp."', '".$goals."', '".$achievements."', '".$strengths."', '".$improvement."', '2','".$filled_by."','".$filled_for."')";
-                            
-                            $result = $conn->query($sql);
-                        
-                            if($result){
-                                echo "<script> window.alert ('Manager Evaluation Complete!');
-                                window.location='../evaluation/evaluationStatus.php';
-                                </script>";
-                            }
-                            else{
-                                echo "<script> window.alert ('Manager Evaluation failed')</script>";
+                                    <div class="form-group">
+                                        <label for="job" class="cols-sm-2 control-label"> Write areas in which there is a room for improvement: <span id="req"></span></label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <textarea rows="6" cols="100%" class="form-control" name="improvement" id="improvement" readonly>'.$row_3["improvement"].'</textarea>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </form>';
                             }
                         }
-                    
-                        $conn->close();
-                    
-                    ?>
+                        ?>
                     </div>
                 </div>
             </div>

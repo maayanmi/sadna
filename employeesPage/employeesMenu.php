@@ -5,7 +5,18 @@
  ?>
 <html>
     <head>
-        <title>Employees Menu</title>
+        <title>HR4U</title>
+        <link rel="icon" href="../homePage/logo.png">
+        
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <!-- Sidenav bootstrap css -->
+      
+            <!-- Bootstrap Footer Social icons -->
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
+      <!--/ Bootstrap Footer Social icons -->
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -30,8 +41,8 @@
         <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" ></a>
-            
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
             </a>
@@ -40,7 +51,7 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -79,9 +90,7 @@
                     </fieldset>
                     
                     <br>
-
                   </form>
-                  <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <?php
                         if ($permission == 1) //for hr manger
                         {
@@ -104,7 +113,7 @@
                                 $sql = "SELECT * FROM employee WHERE department = '".$emp_department."' 
                                 AND name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
                                 $result = $conn->query($sql);
-                                
+
                                 if ($result->num_rows > 0) {
                                     echo '<table>
                                             <tr>
@@ -200,10 +209,11 @@
                         }
                         
                     ?>
-                    
-                     <div class="row">
+       
+                     <div class="row" style="margin-top:  0;">
                         <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick='window.location.href="newEmployee.php"'>Add New Employee</button></div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-3">
                             <button type="button" class="btn btn-primary" onclick="window.location='mbo.php'">Create MBO Report</button></div>

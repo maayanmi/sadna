@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+
+ ?>
 <html>
     <head>
         <title>HR4U</title>
@@ -9,20 +15,22 @@
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <!-- Sidenav bootstrap css -->
       
-            <!-- Bootstrap Footer Social icons -->
+    <!-- Bootstrap Footer Social icons -->
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
       <!--/ Bootstrap Footer Social icons -->
         
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+        <link rel="stylesheet" href="evalFormEmp.css">
+        
     </head>
     
     <body>
         <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -32,16 +40,57 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
 <!-------------MAIN--------------->
         <main>
-            <div class="container"  >
-                <div class="row main" >
+            <div class="container">
+                <div class="row main">
 				    <div class="main-login main-center">
                 <!-------your main here-------->
+                        <?php
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
+                        
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+                            if(isset($_POST['submit'])){
+                                $goals = $_POST['goals'];
+                                $achievements = $_POST['achievements'];
+                                $strengths = $_POST['strengths'];
+                                $improvement = $_POST['improvement'];
+                            
+                                $sql_1 = "SELECT name FROM employee WHERE email = '".$email."'";
+                                $result_1 = $conn->query($sql_1);
+                                while($row = $result_1->fetch_assoc()) {
+                                    $filled_by = $row['name'];
+                                }
+                            
+                                 $sql ="INSERT INTO `evaluation` (`evaluation_date`, `email`, `goals`, `achievements`, `strengths`, `improvement`, `status`, `filled_by`,	`filled_for`) 
+                                 VALUES(CURDATE(), '".$email."', '".$goals."', '".$achievements."', '".$strengths."', '".$improvement."', '1','".$filled_by."','".$filled_by."')";
+                                
+                                $result = $conn->query($sql);
+                            
+                                if($result){
+                                    echo "<script> window.alert ('Self Evaluation Complete!');
+                                    window.location='../evaluation/evaluationStatus.php';
+                                    </script>";
+                                }
+                                else{
+                                    echo "<script> window.alert ('Self Evaluation failed')</script>";
+                                }
+                            }
+                            $conn->close();
+                        ?>
+
                     </div>
                 </div>
             </div>
@@ -79,4 +128,4 @@
         </script>
     </body>
 </html>
-
+    

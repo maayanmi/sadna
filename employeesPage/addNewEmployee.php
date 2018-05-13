@@ -6,7 +6,8 @@
  ?>
 <html>
     <head>
-        <title>Add new employee</title>
+        <title>HR4U</title>
+        <link rel="icon" href="../homePage/logo.png">
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -31,10 +32,10 @@
     </head>
     
     <body>
-        <header>     
+        <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -44,7 +45,7 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../emloyeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -55,20 +56,6 @@
                 <div class="row main" >
 				    <div class="main-login main-center">
                 <!-------your main here-------->
-                           
-                    <?php
-                        $servername = "localhost";
-                        $database = "maayanmi_hr4u";
-                        $username = "maayanmi_eyal";
-                        $password = "Aa123";
-                        $usertable="enquiry";
-                        // Create connection
-
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
-                        } 
-                    ?>
                     <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <div class="col-md-2 col-sm-2 col-xs-3"></div>
                     <div class="col-md-2 col-sm-2 col-xs-3"></div>
@@ -150,11 +137,9 @@
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }  
         </script>
     </body>
-
 </html>
