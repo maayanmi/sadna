@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+
+<?php session_start();
+ $email=$_SESSION["email"];
+ $permission = $_SESSION["permission"];
+
+ ?>
 <html>
     <head>
-        <title>Employee Evaluation Form</title>
+        <title>HR4U</title>
+        <link rel="icon" href="../homePage/logo.png">
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -15,6 +22,8 @@
         
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
+        <link rel="stylesheet" href="evalFormEmp.css">
+        
     </head>
     
     <body>
@@ -31,25 +40,24 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
 <!-------------MAIN--------------->
         <main>
-            <div class="container"  >
-                <div class="row main" >
+            <div class="container">
+                <div class="row main">
 				    <div class="main-login main-center">
                 <!-------your main here-------->
-                   <form class="" method="post" action="evaluationFormEmp.php">
-						<h3>Self Evaluation For Employee</h3>
+                   <form class="" method="post" action="newEvaluationFormEmp.php">
+						<h3>Employee Self Evaluation</h3>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 lables" >Write your main goals for the last year:
                                 <span id="req"></span></label>
 							<div class="inputs">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="goals" id="goals" required>
+									<textarea rows="6" cols="100%" class="form-control" name="goals" id="goals" required></textarea>
 								</div>
                             </div>
 						</div>
@@ -58,18 +66,16 @@
 							<label for="adress" class="cols-sm-2 control-label">Write the main achievements of the last year: <span id="req"></span></label>
 							<div class="inputs">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="achievements" id="achievements" required >
+									<textarea rows="6" cols="100%" class="form-control" name="achievements" id="achievements" required></textarea>
 								</div>
                             </div>      
 						</div>
                         
 						<div class="form-group">
-							<label for="phone_number" class="cols-sm-2 control-label"> Write areas in wich you demonstrated your strengths: <span id="req"></span></label>
+							<label for="phone_number" class="cols-sm-2 control-label"> Write areas in which you demonstrated your strengths: <span id="req"></span></label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="job name" class="form-control" name="strengths" id="strengths" required>
+									<textarea rows="6" cols="100%" class="form-control" name="strengths" id="strengths" required></textarea>
 								</div>
 							</div>
 						</div>                                 
@@ -78,37 +84,16 @@
 							<label for="job" class="cols-sm-2 control-label"> Write areas in which there is a room for improvement: <span id="req"></span></label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="job name" class="form-control" name="improvement" id="improvement" required>
+									<textarea rows="6" cols="100%" class="form-control" name="improvement" id="improvement" required></textarea>
 								</div>
 							</div>
 						</div> 
-
+                       
 						<div class="save">
-                            <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="submit" id="button" name="submit" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
 						</div>
 						
-					</form>     
-<!--
-                   <?php
-                        /*if ($permission == 1) //for hr manger*/
-                        {
-                            $servername = "localhost";
-                            $database = "maayanmi_hr4u";
-                            $username = "maayanmi_eyal";
-                            $password = "Aa123";
-                            $usertable="enquiry";
-                            // Create connection
-
-                            $conn = mysqli_connect($servername, $username, $password, $database);
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            } 
-                            
-                            
-                            $conn->close();
-                    ?>
--->
+					</form> 
                     </div>
                 </div>
             </div>

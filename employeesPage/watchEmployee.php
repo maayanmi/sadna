@@ -7,10 +7,22 @@
  ?>
 <html>
     <head>
-        <title>Watch Employee</title>
+        <title>HR4U</title>
+        <link rel="icon" href="../homePage/logo.png">
         
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <!-- Sidenav bootstrap css -->
+      
+            <!-- Bootstrap Footer Social icons -->
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
+      <!--/ Bootstrap Footer Social icons -->
+        
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         
@@ -23,7 +35,19 @@
         <header>       
             <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
             <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
+                    <li><a href="../emloyeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
       
 <!-------------MAIN--------------->
@@ -67,7 +91,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="adress" class="cols-sm-2 control-label">Adress <span id="req"></span></label>
+                                                <label for="adress" class="cols-sm-2 control-label">Address <span id="req"></span></label>
                                                 <div class="inputs">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -90,14 +114,22 @@
                                                 <label for="family_status">Family Status</label>
                                                 <div class="inputs">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                        <select name="family_status" class="form-control"  id="family_status" value="'.$row["family_status"].'" required><optgroup label="options">
-                                                            <option>Single</option>
-                                                            <option>Married</option>
-                                                            <option>Divorced</option>
-                                                            <option>widower</option> 
-                                                            </optgroup>
-                                                        </select>
+                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>';
+                                                        $sql_2="SELECT family_status
+                                                                    FROM employee
+                                                                    GROUP BY family_status";
+                                                        $result_2 = mysqli_query($conn, $sql_2);
+                                                        echo '<select name="family_status" class="form-control" id="family_status" required>';
+                                                        
+                                                        while($row_2 = mysqli_fetch_assoc($result_2)) {
+                                                            if($row_2['family_status'] == $row['family_status']){
+                                                                echo "<option value='".$row['family_status']."' selected>".$row['family_status']."</option>";
+                                                            }
+                                                            else{
+                                                                echo "<option value='".$row_2['family_status']."'>".$row_2['family_status']."</option>";
+                                                            }
+                                                        }
+                                                        echo '</select>
                                                     </div>            
                                                 </div>
                                             </div>
@@ -106,12 +138,22 @@
                                                 <label for="gender">Gender</label>
                                                 <div class="inputs">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                        <select name="gender" class="form-control"  id="gender" value="'.$row["gender"].'" required><optgroup label="options">
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                            </optgroup>
-                                                        </select>
+                                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>';
+                                                        $sql_1="SELECT gender
+                                                                    FROM employee
+                                                                    GROUP BY gender";
+                                                        $result_1 = mysqli_query($conn, $sql_1);
+                                                        echo '<select name="gender" class="form-control"  id="gender" required>';
+                                                        
+                                                        while($row_1 = mysqli_fetch_assoc($result_1)) {
+                                                            if($row_1['gender'] == $row['gender']){
+                                                                 echo "<option value='".$row['gender']."' selected>".$row['gender']."</option>";
+                                                            }
+                                                            else{
+                                                                echo "<option value='".$row_1['gender']."'>".$row_1['gender']."</option>";
+                                                            }
+                                                        }
+                                                        echo '</select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,10 +218,10 @@
                                                 </div>
                                             </div> 
 
-                                            <input type="hidden" name="id_emp" value="'.$id_emp.'"> 
                                             <div class="save">
-                                                <input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Update" name="update" onClick="validate()">
+                                                <input type="submit" id="button" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Update" name="update" onClick="validate()">
                                             </div>
+                                            <input type="hidden" name="id_emp" value="'.$id_emp.'"> 
                                         </form>';
 
                                     }
@@ -248,16 +290,17 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                 </div>
                </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "#">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>

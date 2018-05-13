@@ -42,12 +42,15 @@ fieldset {
     position: relative;
     width: 100%;
     padding-left: 83%;
+    padding-bottom: 10px;
+    padding-top: 3%;
 }
 
 .emp_depart{
     display: block;
     position: relative;
     width: 100%;
+    padding-top: 5px;
 }
 
 h3{
@@ -55,6 +58,12 @@ h3{
     margin-top: 5px;
     margin-bottom: 10px;
     text-align: center;
+}
+
+#watch{
+    color:black;
+    background-color: #ccc;
+    border-color: #d2d2d2;
 }
 
 .row{
@@ -70,7 +79,6 @@ table {
 
 td, tr {
     border: 1px solid #252240;
-    text-align: left;
     text-align: center;
     padding: 8px;
     color:#001a4d;
@@ -79,7 +87,6 @@ td, tr {
 }
 th{
     border: 1px solid #252240;
-    text-align: left;
     text-align: center;
     padding: 8px;
     color:#eaeae1;
@@ -93,4 +100,11 @@ th{
     border-color: #bce8f1;
     width: 50%;
     margin: 0 auto;
+}
+
+@media (min-width: 992px){
+    .col-md-2 {
+        width: 16.66666667%;
+        padding-top: 2%;
+    }
 }
