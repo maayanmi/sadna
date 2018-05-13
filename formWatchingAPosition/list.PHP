@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="../homePage/logo.png">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,9 +43,9 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -59,9 +60,6 @@
                   <div class="col-md-2 col-sm-2 col-xs-3"></div>
 
 <?php
-
-
-
 
                             	$servername = "localhost";
 								$database = "maayanmi_hr4u";
@@ -79,15 +77,11 @@
 									die("Connection failed: " . mysqli_connect_error());
 								}
 								
-
-                                     
 									$sql = "SELECT `job_id`,`file`,`sender`,employee.name, job.job_name FROM `CV_upload`,job,employee WHERE job_id=job.job_number AND CV_upload.sender = employee.email";
 									$result = $conn->query($sql); 
 									
 
 									if ($result->num_rows > 0) { 
-									    
-									    
 									    
 										 echo "<div class = 'empty'>
                                                     <table>
@@ -106,7 +100,7 @@
 											 $filename =$row["file"] ;
 											 
 											                                  
-                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' >". $filename ."</a><br></br>" . "</td></tr>";
+                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
 										 }
 									
 											 

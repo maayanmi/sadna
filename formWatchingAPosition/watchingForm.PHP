@@ -14,6 +14,7 @@
 
 <html>
     <head>
+    <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <title>Watch A Position</title>
     <meta charset="utf-8">
@@ -59,9 +60,9 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -122,7 +123,7 @@
     background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%)">
                             <input type="submit" value="Upload" name="submit" id="uploadButton" style="   color: black;
     border: 1px solid #ccc;
-    margin-top: 2px;
+    margin-top: 10px;
     padding: 6px 12px;
     width: fit-content;
     text-shadow: 0 1px #fff;
@@ -175,17 +176,18 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                 </div>
                </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "#">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>
 

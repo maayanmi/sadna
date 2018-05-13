@@ -15,14 +15,16 @@
      $job_status = '';
      $description = '';
 
+     $servername = "localhost";
+     $database = "maayanmi_hr4u";
+        $username = "maayanmi_eyal";
+        $password = "Aa123";
+
     if ($is_update == "true"){
         $submit_button = "Update";
         $page_title = "Update Job";
         
-        $servername = "localhost";
-        $database = "maayanmi_hr4u";
-        $username = "maayanmi_eyal";
-        $password = "Aa123";
+        
         $usertable="enquiry";
         // Create connection
 
@@ -65,6 +67,7 @@
     ?>
 <html>
 <head>
+    <link rel="icon" href="../homePage/logo.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,12 +111,44 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
+      
+      
+        <!-- Modal -->
+  <!--<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+   <!--   <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="modaltitle" class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <p id="modalbody">Some text in the modal. </p>
+        </div>
+        <div class="modal-footer">
+            
+    <button id ="b_close" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            
+      <script>
+            var id_row;
+           
+            $("#myModal").on('shown.bs.modal', function () {
+
+                $('#b_close').focus();
+                $('#b_close').click(function (event) {
+                     window.location="../jobList/jobMenu.PHP";
+                
+                    });
+                });
+					
+        </script>-->
       
 <!-------------MAIN--------------->
         
@@ -171,14 +206,31 @@
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-</span>
                                     <?php
-                                    echo '<select name="job_type" class="form-control"  id="job_type" value="' . $job_type . '" required selected><optgroup label="options">
-                                        <option>Full time job</option>
-                                        <option>Part time job</option>
-                                    </optgroup>
-                                    </select>';
+                                    
+                                    // Create connection
+
+                                    $conn = mysqli_connect($servername, $username, $password, $database);
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    } 
+                                    $sql_2="SELECT distinct(job_type) FROM job";
+                                    $result_2 = mysqli_query($conn, $sql_2);
+                                    echo '<select name="job_type" class="form-control" id="job_type" required>';
+                                    
+                                    while($row_2 = mysqli_fetch_assoc($result_2)) {
+                                        if($row_2['job_type'] == $job_type){
+                                            echo "<option value='".$row_2['job_type']."' selected>".$job_type."</option>";
+                                        }
+                                        else{
+                                            echo "<option value='".$row_2['job_type']."'>".$row_2['job_type']."</option>";
+                                        }
+                                    }
+                                    echo '</select>';
+                                    $conn->close();
                                     ?>
+
+</span>
                                 </div>            
                             </div>
                         </div>
@@ -229,20 +281,36 @@
                         </div>
                                  
                         <div class="form-group">
-                            <label for="family_status">Job Status</label>
+                            <label for="job_status">Job Status</label>
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 </span>
-<!--                                    <optgroup label="options">-->
-                                      <?php
-                                        echo '<select name="job_status" class="form-control"  id="job_status" required><optgroup label="options">
-                                            <option>Approved</option>
-                                            <option>Declined</option>
-                                        </optgroup>
-                                        </select>';
+
+                                <?php
+                                    
+                                    // Create connection
+
+                                    $conn = mysqli_connect($servername, $username, $password, $database);
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    } 
+                                    $sql_2="SELECT distinct(job_status) FROM job";
+                                    $result_2 = mysqli_query($conn, $sql_2);
+                                    echo '<select name="job_status" class="form-control" id="job_status" required>';
+                                    
+                                    while($row_2 = mysqli_fetch_assoc($result_2)) {
+                                        if($row_2['job_status'] == $job_status){
+                                            echo "<option value='".$row_2['job_status']."' selected>".$job_status."</option>";
+                                        }
+                                        else{
+                                            echo "<option value='".$row_2['job_status']."'>".$row_2['job_status']."</option>";
+                                        }
+                                    }
+                                    echo '</select>';
+                                    $conn->close();
                                     ?>
-<!--                                    </optgroup>-->
+
                                 </div>            
                             </div>
                         </div>
@@ -258,10 +326,6 @@
                         if(isset($_POST['button_pressed']))
                         {
                               
-                            $servername = "localhost";
-                            $database = "maayanmi_hr4u";
-                            $username = "maayanmi_eyal";
-                            $password = "Aa123";
                             $usertable="enquiry";
                         
                             $conn = mysqli_connect($servername, $username, $password, $database);
@@ -291,7 +355,9 @@
                                          </script>";
                                     }
                                     else {
-                                        // TODO: treat 
+                                         echo  "<script> alert('There was a problen updating the job, please try again');
+                                         window.location='../formNewJob/formNew.PHP';
+                                         </script>"; 
                                     }
                                 }
                                 else{
@@ -304,25 +370,6 @@
                                 }
 
                                 
-                                     //$result = $conn->query($sql);
-                            
-                            
-                            // if successfully updated. 
-                                   //if ($conn->query($sql) === TRUE) {}
-
-//                                    $addressee      = 'hr4ualgosec@gmail.com';
-//                                    $subject = 'New Position';
-//                                    $message = "Hello, a new position has been added to " . $department . " department. You can view it in the job list";
-//                                    $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
-//                                        'Reply-To: webmaster@example.com' . "\r\n" .
-//                                        'X-Mailer: PHP/' . phpversion();
-//
-//                                       mail($addressee, $subject, $message, $headers);
-//                            
-//                                         echo  "<script> window.alert ('Your new job has been saved, and sent on mail');
-//                                         window.location='../jobList/jobMenu.PHP';
-//                                         </script>";
-//                                        } 
                         }
 
                         ?>

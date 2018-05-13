@@ -6,7 +6,8 @@
  ?>
 <html>
     <head>
-        <script> var permission = <?php echo $permission ; ?> ; </script>
+    <link rel="icon" href="../homePage/logo.png">
+    <script> var permission = <?php echo $permission ; ?> ; </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Header and Footer bootstrap css -->
-   <link rel="stylesheet" href="../CSS/headerFooter.css" >
+   <!--<link rel="stylesheet" href="../CSS/headerFooter.css" >-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -47,9 +48,9 @@
         	<div class="collapse menu" id="menu">
                 <ul class="list-inline">
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="#">Managing Jobs</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -84,12 +85,15 @@
                                          <th>Name </th>
                                          <th>Department </th>
                                          <th>View</th>
-                                         <th id='publishCol' style='display:none'>Publish</th>
+                                         <th id='publishCol' class='publishCol' style='display:none'>Publish</th>
                                         </tr>";
 										 // output data of each row 
 										 
 							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td>". "<input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input>". "</td><td id='colPublish' style='display:none'>". "<input id='publish_".$row["job_number"]."' class='publish-position' style='display:none' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input>". "</td> </tr>";
+									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td><input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input></td><td id='colPublish' class='colPublish' style='display:none'><input id='publish_".$row["job_number"]."' class='publish-position' style='display:none' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input></td> </tr>";
+							if ($permission==1){
+							    echo "<script> $('.publishCol').show(); $('.colPublish').show(); $('.publish-position').show();</script>";
+							}
 								}
 								echo "</table>";
 							}
@@ -99,15 +103,7 @@
                         $conn->close();
                     ?>
                     
-                      <script>
-              
-                if (permission == 1) //for hr manager
-                    {
-                        $('#publishCol').show(0)
-                        $('#colPublish').show(0)
-                        $('#publish_').show(0);
-                    }    
-          </script>
+                    
                     
 
                    <script>
