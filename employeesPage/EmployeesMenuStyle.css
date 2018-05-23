@@ -1,5 +1,5 @@
 legend {
-    width: 200px;
+    width: auto;
     padding-left: 2px;
     padding-right: 2px;
     border: none;
@@ -24,7 +24,8 @@ fieldset {
 }
 
 .form-control{
-    width: 300px;
+        width: 300px;
+        max-width: 100%;
 }
 .search-part{
     display: block;
@@ -43,6 +44,7 @@ fieldset {
     width: 100%;
     padding-left: 83%;
     padding-bottom: 10px;
+    padding-top: 3%;
 }
 
 .emp_depart{
@@ -78,7 +80,6 @@ table {
 
 td, tr {
     border: 1px solid #252240;
-    text-align: left;
     text-align: center;
     padding: 8px;
     color:#001a4d;
@@ -87,7 +88,6 @@ td, tr {
 }
 th{
     border: 1px solid #252240;
-    text-align: left;
     text-align: center;
     padding: 8px;
     color:#eaeae1;
@@ -101,4 +101,17 @@ th{
     border-color: #bce8f1;
     width: 50%;
     margin: 0 auto;
+}
+
+@media (min-width: 992px){
+    .col-md-2 {
+        width: 16.66666667%;
+        padding-top: 2%;
+    }
+}
+
+@media (min-width: 992px){
+    .col-md-3 {
+        width: 75%;
+    }
 }

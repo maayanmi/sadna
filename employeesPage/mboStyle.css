@@ -39,10 +39,16 @@ th{
 }
 
 .main-center{
-    height: 400px;
+    height: auto;
 }
 
 .row{
     padding-bottom: 15px;
     padding-top: 15px;
+}
+
+#bonus{
+    height: 200px;
+    width: 300px;
+    margin: 10% 23% 6% 29%;
 }

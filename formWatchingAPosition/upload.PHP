@@ -4,26 +4,19 @@ session_start();
 $job_id2 = $_GET["job_id"];
 $job_id = $_GET["job_id"]."/";
 $email=$_SESSION["email"];
-
 $target_dir = "uploads/";
+$candidate_name =$_POST["candidate_name"];
 
 //create folder based on the job id if not exist
-
 if (!file_exists($target_dir . $job_id)) {
     mkdir($target_dir . $job_id, 0777, true);
 }
-
-
 // path to file
-
 $target_file = $target_dir . $job_id . basename($_FILES["fileToUpload"]["name"]);
-
 //if upload != 1 differnt errors
 $uploadOk = 1;
-
 // get file type
 $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
 // Check if file already exists
 if (file_exists($target_file)) {
      echo  "<script> window.alert ('Sorry, file already exists.');
@@ -77,7 +70,8 @@ if ($uploadOk == 0) {
                             die("Connection failed: " . mysqli_connect_error());
                         	}
                         
-                        $sql="INSERT INTO {$usertable} (file,job_id,sender) VALUES (('$file_name'),$job_id2,('$email'))";
+                        //$sql="INSERT INTO {$usertable} (file,job_id,sender) VALUES (('$file_name'),$job_id2,('$email'))";
+                         $sql="INSERT INTO {$usertable} (file,job_id,sender,candidate_name) VALUES (('$file_name'),$job_id2,('$email'), ('$candidate_name'))";
                         $result= $conn->query($sql); 
                         
                         // if successfully updated. 
