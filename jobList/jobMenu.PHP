@@ -152,7 +152,7 @@
               
                         if (permission == 1){
                         $('#view').show(0);}    
-                        </script>
+                        </script> 
                     
         </main>
 <!------------FOOTER--------------->
