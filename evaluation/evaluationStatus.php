@@ -4,12 +4,12 @@
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
  $pic=$_SESSION["picture"];
- 
+ $pic=$_SESSION["picture"];
  ?>
  
 <html>
     <head>
-       <title>HR4U</title>
+       <title>Evaluation Status</title>
         <link rel="icon" href="../homePage/logo.png">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,8 +32,8 @@
     <body>
         <header> 
         <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" ></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
             
             

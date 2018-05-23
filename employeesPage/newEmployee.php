@@ -75,7 +75,7 @@
 			<div class="row main" >
 				<div class="main-login main-center">
 				
-					<form class="" method="post" action="addNewEmployee.php">
+					<form class="" method="post" action="">
 						<h3>Create New Employee</h3>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 lables" >Name
@@ -185,7 +185,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-									<input type="start_date" class="form-control" name="start_date" id="start_date" required>
+									<input type="date" class="form-control" name="start_date" id="start_date" style="line-height:  13px;" required>
 								</div>
 							</div>
 						</div>                       
@@ -195,16 +195,68 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="email" class="form-control" name="email" id="email" required>
+									<input type="mail" class="form-control" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 								</div>
 							</div>
 						</div> 
                         
 						<div class="save">
-                            <input type="submit" id="button" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
+                            <input type="submit" name="submit" id="button" class="btn_save btn btn-primary btn-lg btn-block login-button" value="Save" onClick="validate()">
 						</div>
 						
 					</form>
+					   <?php
+                          if ($permission == 1) //for hr manger
+                          {
+                            $servername = "localhost";
+                            $database = "maayanmi_hr4u";
+                            $username = "maayanmi_eyal";
+                            $password = "Aa123";
+                            $usertable="enquiry";
+                            // Create connection
+
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+
+                            if(isset($_POST['submit'])){
+                                $name = $_POST['name'];
+                                $adress = $_POST['adress'];
+                                $phone_number = $_POST['phone_number'];
+                                $family_status = $_POST['family_status'];
+                                $gender = $_POST['gender'];
+                                $job = $_POST['job'];
+                                $department = $_POST['department'];
+                                $manager = $_POST['manager'];
+                                $salary = $_POST['salary'];
+                                $start_date = $_POST['start_date'];
+                                $email = $_POST['email'];
+    
+                                 $sql ="INSERT INTO `employee` (`name`, `adress`, `phone`, `family_status`, `gender`, `job`, `department`, `manager`, `salary`, `start_date`, `email`) 
+                                 VALUES('".$name."', '".$adress."', '".$phone_number."', '".$family_status."', '".$gender."', '".$job."', '".$department."', '".$manager."', '".$salary."', '".$start_date."', '".$email."')";
+    
+                                $result = $conn->query($sql);
+    
+                                if($result){
+                                    echo "<script> window.alert ('Add new employee completed!');
+                                    window.location='employeesMenu.php';
+                                    </script>";
+                                }
+                                else{
+                                    echo "<script> window.alert ('Add new employee not completed!');</script>";
+                                }
+                            }
+                                $conn->close();
+                          }
+                        else//for employee
+                        {
+                            echo "<script> window.alert ('You have no authorization');
+                            window.location='../logInPage/unauthorized.html';
+                            </script>";
+                        }
+                          
+                        ?>
 				</div>
 			</div>
 		</div>

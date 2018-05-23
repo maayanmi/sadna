@@ -3,6 +3,7 @@
 <?php session_start();
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
+ $pic=$_SESSION["picture"];
 
  ?>
 <html>
@@ -30,8 +31,8 @@
     <body>
         <header>       
             <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
