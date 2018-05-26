@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php session_start();
  $email=$_SESSION["email"];
-  $permission = $_SESSION["permission"];
+ $permission = $_SESSION["permission"];
+  $pic=$_SESSION["picture"];
  
  ?>
 <html>
@@ -13,20 +14,47 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title></title>
+
+       <title>Enquiry List</title>
+        <link rel="icon" href="../homePage/logo.png">
         
-        <link rel="stylesheet" href="../homePage/homePage.css">
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <!-- Sidenav bootstrap css -->
+      
+            <!-- Bootstrap Footer Social icons -->
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
+      <!--/ Bootstrap Footer Social icons -->
+        
+        <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
 		<link rel="stylesheet" href="empEnquiryList.css">
     </head>
     
     <body>
         <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.html"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+             <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
+            
+            <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        	<div class="collapse menu" id="menu">
+                <ul class="list-inline">
+                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
+                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
+                    <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
+                </ul>   
+        	</div>
         </header>
-        
+
+   
+ 
         					<!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -79,10 +107,10 @@
                 <div class="row main">
 				    <div class="main-login main-center">
                 <!-------your main here-------->
-						 <h3><b> Employees Enquiries</b></h3>
+						 <h3> Employees Enquiries</h3>
 						
 					   	<button  id="open" type="button" class="btn btn-primary" onClick="location.href = 'newEnquiry.php';" style="display: none;">Open New Enquiry</button>
-					    <button id="report" type="button" class="btn btn-primary" style="display: none;">Create Enquiry Report</button>
+					    <button id="report" type="button" class="btn btn-primary" onClick="location.href = 'enqReport.php';"style="display: none;">Create Enquiry Report </button>
 
 							<?php
 								$servername = "localhost";
@@ -105,7 +133,7 @@
 								{
                                    echo "<script> $('#report').show(0);</script>";
                                         
-									$sql = "SELECT subject,name,date,hr_response,enquiry.id FROM employee,enquiry where sender=employee.email and hr_response='' ";
+									$sql = "SELECT subject,name,open_date,hr_response,enquiry.id FROM employee,enquiry where sender=employee.email and hr_response='' ";
 									$result = $conn->query($sql); 
 									
 
@@ -124,7 +152,7 @@
 										 
 										 while($row = $result->fetch_assoc()) {
 											 
-											 echo "<tr><td>" . $row["subject"]. "</td><td>" . $row["name"]. "</td><td>" . $row["date"]."</td><td>"."<p Id='xyz'>".$row["id"]."</p>"."</td><td>". "<input class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal' ></input>". "</td></tr>"; 
+											 echo "<tr><td>" . $row["subject"]. "</td><td>" . $row["name"]. "</td><td>" . $row["open_date"]."</td><td>"."<p Id='xyz'>".$row["id"]."</p>"."</td><td>". "<input class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal' ></input>". "</td></tr>"; 
 											 
 											 
 										 }
@@ -133,7 +161,7 @@
 										 
 									} else{
                                         echo "<div class = 'empty'> ";
-										  echo "<p id='emptyList'> Enquiry List Is Empty !</p>";
+										  echo "<p id='emptyList'>     You have no open enquiries !</p>";
                                           echo " <img id='noEnq' src='emptymsg.png' alt='No Enquiry'>";
                                         echo "</div>";
                                         }
@@ -142,7 +170,7 @@
 								{
                                     echo " <script> $('#open').show(0);</script>";
                                     
-									$sql = "SELECT subject,name,date,hr_response,enquiry.id FROM employee,enquiry where sender=employee.email and sender=('$email')";
+									$sql = "SELECT subject,name,open_date,hr_response,enquiry.id FROM employee,enquiry where sender=employee.email and sender=('$email')";
 									$result = $conn->query($sql); 
 
 									if ($result->num_rows > 0) { 
@@ -152,13 +180,13 @@
                                                         <th>Subject </th>
                                                         <th>Name </th>
                                                         <th>Date </th>
-                                                        <th>Id</th>
-                                                        <th>Response</th> 
+                                                        <th>Id </th>
+                                                        <th>Response </th> 
                                                         </tr>
                                                      ";
 												  
 										 while($row = $result->fetch_assoc()) {
-                                             echo "<tr><td>" . $row["subject"]. "</td><td>" . $row["name"]. "</td><td>" . $row["date"]."</td><td>"."<p Id='xyz'>".$row["id"]."</p>"."</td><td>". "<input class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal' style='display: none;' ></input>". "</td></tr>";    										
+                                             echo "<tr><td>" . $row["subject"]. "</td><td>" . $row["name"]. "</td><td>" . $row["open_date"]."</td><td>"."<p Id='xyz'>".$row["id"]."</p>"."</td><td>". "<input class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal' style='display: none;' ></input>". "</td></tr>";    										
     										 if (!empty($row["hr_response"])) {
     										 echo "<script>  $('.update-allocation').show(0); </script>";
     										 }
@@ -171,7 +199,7 @@
 									else
                                     {
                                         echo "<div class = 'empty'>";
-										   echo "<p id='emptyList'> Enquiry List Is Empty !</p>";
+										   echo "<p id='emptyList'>     You have no open enquiries !</p>";
                                         echo " <img id='noEnq' src='emptymsg.png' alt='No Enquiry'>";   
                                         echo "</div>";
                                     }
@@ -208,7 +236,8 @@
                 </div>
             </div>
         </main>
- <footer class="footer-distributed">
+ <!------------FOOTER--------------->
+        <footer class="footer-distributed">
             <div class="footer-style">
               <div class="footer-center">
                 <div>
@@ -226,17 +255,17 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                 </div>
                </div>
-                <div class="footer-right">
-                    <div class="footer-company-about">
-                         <p><a herf = "#">Managing Job</a></p>
-                         <p><a herf = "#">Employees</a></p>
-                         <p><a herf = "#">Employees Enquiries</a></p>
-                         <p><a herf = "#">Evaluations</a></p>
-                    </div>
-                </div>
              <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
             </div>
-			
         </footer>
+        <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }  
+        </script>
     </body>
 </html>

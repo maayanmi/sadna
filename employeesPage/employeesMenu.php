@@ -10,16 +10,7 @@
         <link rel="icon" href="../homePage/logo.png">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <!-- Sidenav bootstrap css -->
-      
-            <!-- Bootstrap Footer Social icons -->
-      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
-      <!--/ Bootstrap Footer Social icons -->
-        
+
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -212,11 +203,11 @@
                         }
                         
                     ?>
-       
+                    
                      <div class="row" style="margin-top:  0;">
                         <div class="col-md-2 col-sm-2 col-xs-3"><button type="button" class="btn btn-primary" onclick='window.location.href="newEmployee.php"'>Add New Employee</button></div>
                     </div>
-
+                    
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-3">
                             <button type="button" class="btn btn-primary" onclick="window.location='mbo.php'">Create MBO Report</button></div>

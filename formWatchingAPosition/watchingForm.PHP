@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -8,12 +7,14 @@
     $id_row = $_GET["job_num"] ;
     $email=$_SESSION["email"];
     $permission = $_SESSION["permission"];
+    $pic=$_SESSION["picture"];
     
     ?>
         
 
 <html>
     <head>
+    <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
     <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <title>Watch A Position</title>
@@ -50,9 +51,9 @@
     
     <body>
       <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -100,14 +101,17 @@
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<h1>".$row["job_name"]." (".$row["job_type"].")</h1><br>";
-                                echo "<h2>Description</h2><br><p>".$row['description']."</p><br>";
-                                echo "<h2>Requirements</h2><br><p>".$row['job_requires']."</p>";
+                                echo "<h4 style='text-decoration:underline';>Description</h4><br><p>".$row['description']."</p><br>";
+                                echo "<h4 style='text-decoration:underline';>Requirements</h4><br><p>".$row['job_requires']."</p>";
                             }
                         }
                         
                          $conn->close();
                     ?>
                           </form>
+                          
+                          <hr / style="width: 100%">
+                         
                         
                     <!---form of uploading cv -->
                         <br><form id ="myForm" action="bla" method="post" enctype="multipart/form-data">
@@ -121,9 +125,10 @@
     border-radius: 3px 3px;
     box-shadow: 0 1px #fff inset, 0 1px #ddd;
     background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%)">
+                            <input type="text" id="candidate_name" class="form-control" name="candidate_name" style="width: 36.5%; color:black; margin-top: 1%;" placeholder="Enter candidate's name" required>
                             <input type="submit" value="Upload" name="submit" id="uploadButton" style="   color: black;
     border: 1px solid #ccc;
-    margin-top: 10px;
+    margin-top: 0.5%;
     padding: 6px 12px;
     width: fit-content;
     text-shadow: 0 1px #fff;
@@ -146,11 +151,13 @@
           </script>  
                             
                     
+                             
+                        
                         <script>
                         var job_num = <?php echo $_GET["job_num"] ; ?> ;
                         var path = "upload.php?job_id=" ;
                         document.getElementById("myForm").action = path + job_num;
-                        </script>                              
+                        </script>   
 
                         
                   </div>
@@ -165,12 +172,10 @@
                     <i class="fa fa-map-marker"></i>
                     <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
                 </div>
-
                 <div>
                     <i class="fa fa-phone"></i>
                     <p>+972 50 6996868 </p>
                 </div>
-
                 <div>
                     <i class="fa fa-envelope"></i>
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
@@ -183,11 +188,9 @@
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }  
         </script>
     </body>
 </html>
-

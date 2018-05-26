@@ -2,10 +2,12 @@
 <?php session_start();
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
+ $pic=$_SESSION["picture"];
  
  ?>
 <html>
     <head>
+    <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
     <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <meta charset="utf-8">
@@ -38,9 +40,9 @@
     </head>
     <body>
       <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -150,7 +152,7 @@
               
                         if (permission == 1){
                         $('#view').show(0);}    
-                        </script>
+                        </script> 
                     
         </main>
 <!------------FOOTER--------------->

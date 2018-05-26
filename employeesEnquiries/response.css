@@ -6,11 +6,12 @@ h3{ display: block;
     
 #save{ 
    position:relative;
-   top:8px;
+       top: 20px;
+    margin-top: 5%;
+    margin-left: 45%;
     display:block;
     margin: 0 auto;
-    
-    
+    left:47%;
 }
 .btn{
     font-family: cursive;

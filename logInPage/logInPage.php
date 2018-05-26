@@ -1,7 +1,18 @@
- <?php session_start();?>
+ <?php session_start();
+
+if (isset($_GET["out"])){
+    $out=1;
+}
+else{
+    $out=0;
+}
+;
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
+        <title> LogIn</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="logInPage.css">
        <link href="https://fonts.googleapis.com/css?family=Days+One" rel="stylesheet">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -27,7 +38,7 @@
     function onSuccess(googleUser) {
         console.log('Signed in as: ' + googleUser.getBasicProfile().getName()); 
         
-        
+ 
         // send user details to process.php
         var id_token = googleUser.getAuthResponse().id_token;
         var theUrl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="+id_token;
@@ -44,14 +55,16 @@
           }
             
            else
-               $('#proceed').show(0); // button will appear after sign in
+              per(); // button will appear after sign in
         };
 
     xhr.send('theurl=' + theUrl);
 
     }
+  
                 
 </script>
+
 
                       
             <div  class="g-signin2" data-onsuccess="onSuccess"></div>
@@ -63,17 +76,32 @@
             
             
 <script>
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+        
+     var out = <?php echo $out; ?>;
       permission = <?php session_start(); echo $_SESSION["permission"] ?>;
            function per(){
-               
+             if (out==1){
+                 out=0;
+                 signOut();
+                window.location="logInPage.php";
+             }
+             else {
                console.log('aas: ' + permission);
             if (permission!=0){
-                window.location="../homePage/homePage.html";
+                window.location="../homePage/homePage.php";
                 }
-            else
+            else{
                 window.location="unauthorized.html"
                       
             }
+           }}
 </script>
      
     </body>

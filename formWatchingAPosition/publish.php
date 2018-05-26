@@ -57,7 +57,7 @@
     /*$addressee = implode(",", $mails);*/
     $addressee = 'hr4ualgosec@gmail.com,algosecemp@gmail.com';
     $subject = 'New Position';
-    $message = $job_requester. " from " . $department . " department has published a new position - " .$job_name . "\n\nJob's description: \n" . $job_description;
+    $message = $job_requester. " from " . $department . " department has published a new position - " .$job_name . "\n\nJob's description: \n" . $job_description . "\n\n Best regards,\n HR department \n Algosec";
     $headers = 'From: hr4ualgosec@gmail.com' . "\r\n" .
         'Reply-To: webmaster@example.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();

@@ -4,6 +4,7 @@
                 
      $is_update = $_GET["is_update"];
      $job_num = intval($_GET["job_num"]);
+     $pic=$_SESSION["picture"];
 
      $job_requester = $row['job_requester'];
      $job_name = '';
@@ -67,6 +68,7 @@
     ?>
 <html>
 <head>
+    <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
     <link rel="icon" href="../homePage/logo.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -101,9 +103,9 @@
     
   <body>
    <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page" ></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page" ></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -168,7 +170,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <?php
-                                        echo '<input type="text" id="job_requester" class="form-control" name="job_requester" required value="' . $job_requester . '">'; 
+                                        echo '<input type="text" id="job_requester" class="form-control" name="job_requester" required value="' . $job_requester . '" required>'; 
                                     ?>
 								</div>
                             </div>
@@ -181,7 +183,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 									<?php
-                                        echo '<input type="text" id="job_creator" class="form-control" name="job_creator" required value="' . $job_creator . '">';
+                                        echo '<input type="text" id="job_creator" class="form-control" name="job_creator" required value="' . $job_creator . '" required>';
                                     ?>
 								</div>
 							</div>
@@ -194,7 +196,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 									<?php
-                                        echo '<input type="text" id="job_name" class="form-control" name="job_name" required value="' . $job_name . '">';
+                                        echo '<input type="text" id="job_name" class="form-control" name="job_name" required value="' . $job_name . '" required>';
                                     ?>
 <!--                                    <input type="text" id="job_name" class="form-control" name="job_name" required>-->
 								</div>
@@ -202,7 +204,7 @@
 						</div>                                                         
                         
                         <div class="form-group">
-                            <label for="family_status">Job's type</label>
+                            <label for="job_type">Job's type</label>
                             <div class="inputs">
 								<div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -242,7 +244,7 @@
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 </span>
 									<?php
-                                        echo '<input type="text" id="job_department" class="form-control" name="job_department" required value="' . $department . '">';
+                                        echo '<input type="text" id="job_department" class="form-control" name="job_department" required value="' . $department . '" required>';
                                     ?>
 <!--                                    <input type="text" id="job_department" class="form-control" name="job_department" required>-->
 								</div>
@@ -256,7 +258,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
 									<?php
-                                      echo '<input type="date" id="job_open_date" class="form-control" name="job_open_date" required value="' . $job_open_date .'">';
+                                      echo '<input type="date" id="job_open_date" class="form-control" name="job_open_date" required value="' . $job_open_date .'" required>';
                                     ?>
 <!--                                    <input type="date" id="job_open_date" class="form-control" name="job_open_date" required>-->
 								</div>

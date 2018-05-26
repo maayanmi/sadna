@@ -9,7 +9,7 @@ $json = file_get_contents($theurl);
 $obj = json_decode($json);
 $email = $obj->{'email'};
 $name = $obj->{'name'};
-
+$pic = $obj->{'picture'};
 
 $servername = "localhost";
 $database = "maayanmi_hr4u";
@@ -45,6 +45,7 @@ session_start();
 $_SESSION["email"]=$email;
 $_SESSION["name"]=$name;
 $_SESSION["permission"]=$permission ;
+$_SESSION["picture"]=$pic ;
 $conn->close();
  ?>
  

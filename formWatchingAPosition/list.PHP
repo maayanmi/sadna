@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
+     <?php 
+     session_start();
+                
+    $pic=$_SESSION["picture"];
+    
+    ?>
     <head>
+        <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
         <link rel="icon" href="../homePage/logo.png">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,9 +40,9 @@
     </head>
     <body>
        <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -77,7 +84,7 @@
 									die("Connection failed: " . mysqli_connect_error());
 								}
 								
-									$sql = "SELECT `job_id`,`file`,`sender`,employee.name, job.job_name FROM `CV_upload`,job,employee WHERE job_id=job.job_number AND CV_upload.sender = employee.email";
+									$sql = "SELECT `job_id`,`file`,`sender` ,candidate_name,employee.name, job.job_name FROM `CV_upload`,job,employee WHERE job_id=job.job_number AND CV_upload.sender = employee.email";
 									$result = $conn->query($sql); 
 									
 
@@ -88,8 +95,9 @@
                                                       <tr>
                                                         <th>Job Title </th>
                                                         <th>Sender </th>
+                                                        <th>Candidate's Name</th>
                                                         <th>File</th>
-                                                        
+                                                                                                    
                                                       </tr>
                                              </div>";
 										 // output data of each row 
@@ -98,9 +106,10 @@
 										     $job_id = $row["job_id"] ;
 											 $path ="uploads/{$job_id}/";
 											 $filename =$row["file"] ;
+											 $candidate_name=$row["candidate_name"];
 											 
 											                                  
-                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
+                                              echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td> " . $row["candidate_name"]. " </td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
 										 }
 									
 											 

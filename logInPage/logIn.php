@@ -18,4 +18,6 @@ $email_address=$_POST["email_address"];
 $sql3="select count(mail) from permissions where mail=".$email_address" 
 
 
+
+
 ?>  
