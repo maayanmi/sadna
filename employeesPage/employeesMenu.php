@@ -2,12 +2,14 @@
 <?php session_start();
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
+ $pic=$_SESSION["picture"];
  ?>
 <html>
     <head>
-        <title>HR4U</title>
+        <title>Employees Menu</title>
         <link rel="icon" href="../homePage/logo.png">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -29,9 +31,10 @@
     </head>
     <body>
         <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -60,15 +63,15 @@
                     <h3>Employees</h3>
                     <form class="" method="post" action="employeesMenu.php">
                     <fieldset>
-                        <legend>Search Employee:</legend>
+                        <legend>Search:  </legend>
                         <div class="col-md-3 col-sm-3 col-xs-3 sec">
-                            <label for="name" class="cols-sm-2 lables">Employee's Name:
+                            <label for="name" class="cols-sm-2 lables">Name:
                                   <span id="req"></span></label>
                              <input type="search" class="form-control" name="employees_name">
                         </div>
                         <br>
                         <div class="emp_depart col-md-3 col-sm-3 col-xs-3 sec">
-                            <label for="name" class="cols-sm-2 lables" >Employee's Department:
+                            <label for="name" class="cols-sm-2 lables" >Department:
                                 <span id="req"></span></label>
                             <input type="search" class="form-control" name="employees_department">
                         </div>

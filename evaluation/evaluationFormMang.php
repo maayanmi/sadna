@@ -4,13 +4,14 @@
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
  $employee_id= $_SESSION["emp_id_f"];
+ $pic=$_SESSION["picture"];
 
  ?>
 <html>
     <head>
  
         
-        <title>HR4U</title>
+        <title>Manager Evaluation</title>
         <link rel="icon" href="../homePage/logo.png">
         
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -22,7 +23,9 @@
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
       <!--/ Bootstrap Footer Social icons -->
-        
+      
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
         <link rel="stylesheet" href="evalFormEmp.css">
@@ -31,9 +34,10 @@
     
     <body>
         <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -82,6 +86,12 @@
                                 while($row = $result->fetch_assoc()) {
                                     echo'<form method = "post" action = "evaluationFormManag.php">
                                             <h3>Employee Self Evaluation</h3>
+                                            <br>
+                                            <button  type="button" value="move to manager evaluation" class="btn btn-primary" onClick="" 
+                                                    style="font-family:  cursive;font-size:  0.9em;float:  right;">
+                                                    <a href="#manager_form">Move to Manager Evaluation 
+                                                    <i class="material-icons" style="vertical-align: bottom;">arrow_downward</i></a></button>
+                                            <br><br>
                                             <div class="form-group">
                                                 <label for="name" class="cols-sm-2 lables" >Write your main goals for the last year:
                                                     <span id="req"></span></label>
@@ -122,7 +132,7 @@
                                 }
                             }
                     ?>
-                    <form class="" method="post" action="evaluationFormMang.php">
+                    <form id="manager_form" method="post" action="evaluationFormMang.php">
                         <h3>Manager Evaluation</h3>
                         <div class="form-group">
                             <label for="name" class="cols-sm-2 lables" >Write the main goals of the employee for the last year:

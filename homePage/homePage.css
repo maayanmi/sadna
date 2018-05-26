@@ -27,19 +27,30 @@
 }
 
 #home {
-    width: 27px;
-    height: 27px;
+    width: 33px;
+    height: 33px;
     float: right;
     margin-right: 10px;
-    margin-top: 19px;
+    margin-top: 16px;
 }
 
 #logOut {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 43px;
     float: right;
     margin-right: 5px;
-    margin-top: 15px;
+    margin-top: 12px;
+}
+
+#emp_pic{
+   
+    width: 33px;
+    height:33px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 16px;   
+    border: 2px solid #ddd;
+    
 }
 header{
     display: block;
@@ -93,7 +104,7 @@ body {
     color: white; 
     text-transform: uppercase;
     opacity: 0.8;
-    padding-left: 10px;
+    padding-left: 30px;
 }
 .menu a:hover {
     text-decoration: none;

@@ -1,5 +1,5 @@
 legend {
-    width: 200px;
+    width: auto;
     padding-left: 2px;
     padding-right: 2px;
     border: none;
@@ -24,7 +24,8 @@ fieldset {
 }
 
 .form-control{
-    width: 300px;
+        width: 300px;
+        max-width: 100%;
 }
 .search-part{
     display: block;
@@ -106,5 +107,11 @@ th{
     .col-md-2 {
         width: 16.66666667%;
         padding-top: 2%;
+    }
+}
+
+@media (min-width: 992px){
+    .col-md-3 {
+        width: 75%;
     }
 }
