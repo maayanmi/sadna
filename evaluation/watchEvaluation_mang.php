@@ -4,7 +4,7 @@
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
  $employee_id= $_SESSION["emp_id_w"];
-
+ $pic=$_SESSION["picture"];
  ?>
 <html>
     <head>
@@ -12,6 +12,7 @@
         <title>Manager Evaluation</title><!--HR4U-->
         <link rel="icon" href="../homePage/logo.png">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -30,9 +31,10 @@
     
     <body>
         <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            

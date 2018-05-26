@@ -3,14 +3,16 @@
 <?php session_start();
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
- 
+ $pic=$_SESSION["picture"];
+ $pic=$_SESSION["picture"];
  ?>
  
 <html>
     <head>
-       <title>HR4U</title>
+       <title>Evaluation Status</title>
         <link rel="icon" href="../homePage/logo.png">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -24,13 +26,17 @@
         <link rel="stylesheet" href="../homePage/homePage.css" >
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
          <link rel="stylesheet" href="evaluationStatus.css">
+        
     </head>
     
     <body>
-        <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
+        <header> 
+        <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" ></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" ></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            
+            
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
@@ -40,7 +46,7 @@
                     <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
                     <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
                     <li><a href="../employeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="#">Evaluations</a></li>
+                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
                 </ul>   
         	</div>
         </header>
@@ -76,7 +82,7 @@
 									$sql1="SELECT name from employee where employee.email=('$email')";
 									$result1=$conn->query($sql1); 
 									
-									$sql = "SELECT evaluation.email FROM evaluation WHERE evaluation.email=('$email')";
+									$sql = "SELECT evaluation.email FROM evaluation WHERE evaluation.email=('$email') group by email";
 									$result = $conn->query($sql); 
 									
 									
@@ -200,7 +206,7 @@
 									$result1 = $conn->query($sql1); 
 									
 									 	if ($result1->num_rows > 0) { 
-										     echo "<br> <h4>Employees Who Have NOT Completed Evaluation Process</h4>";
+										     echo "<br><h4>Employees Who Have NOT Completed Evaluation Process</h4>";
 										     echo "
                                                     <table>
                                                       <tr>
@@ -215,11 +221,11 @@
                                                 
                                                 if ($row['status']== null){
                                                 
-                                                   echo "<tr><td>" . $row['name']. "</td><td>" . $row['department']."</td><td>" . $row['manager'] ."</td><td>". "<img src='red.png' class='status' alt='did not fill employee evaluation'>" ."</td></tr>";
+                                                   echo "<tr><td>" . $row['name']. "</td><td>" . $row['department']."</td><td>" . $row['manager'] ."</td><td>". "<img src='red.png' class='status' title='waiting for employee evaluation' 'alt='did not fill employee evaluation'>" ."</td></tr>";
                                                 }
                                                 
                                                 else {
-                                                    echo "<tr><td>" . $row['name']. "</td><td>" . $row['department']."</td><td>" . $row['manager'] ."</td><td>". "<img src='yellow.png' class='status' alt='did not fill manager evaluation'>" ."</td></tr>";
+                                                    echo "<tr><td>" . $row['name']. "</td><td>" . $row['department']."</td><td>" . $row['manager'] ."</td><td>". "<img src='yellow.png' class='status' title='waiting for manager evaluation' alt='did not fill manager evaluation'>" ."</td></tr>";
                                                 }
                                             }
                                             

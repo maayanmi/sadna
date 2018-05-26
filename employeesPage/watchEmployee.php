@@ -4,12 +4,14 @@
  $email=$_SESSION["email"];
  $permission = $_SESSION["permission"];
  $id_emp = $_GET["id_emp"] ;
+ $pic=$_SESSION["picture"];
  ?>
 <html>
     <head>
-        <title>HR4U</title>
+        <title>Watch Employee</title>
         <link rel="icon" href="../homePage/logo.png">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
@@ -33,9 +35,10 @@
     
     <body>
         <header>       
-            <a href = "../homePage/homePage.html"><img id ="logo" src = "../homePage/logo.png" ></a>
-            <a href = "../homePage/homePage.html"><img id ="home" src = "../homePage/home.png" ></a>
-            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" ></a>
+            <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
+            <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
+            <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
             
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
