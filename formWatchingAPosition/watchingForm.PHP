@@ -9,11 +9,26 @@
     $permission = $_SESSION["permission"];
     $pic=$_SESSION["picture"];
     
+    if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
+    
     ?>
         
 
 <html>
     <head>
+        <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
     <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
     <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>

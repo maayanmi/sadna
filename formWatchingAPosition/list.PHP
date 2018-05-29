@@ -4,9 +4,23 @@
      session_start();
                 
     $pic=$_SESSION["picture"];
+    if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
     
     ?>
     <head>
+        <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
         <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
         <link rel="icon" href="../homePage/logo.png">
         <meta charset="utf-8">
@@ -112,25 +126,6 @@
                                               echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td> " . $row["candidate_name"]. " </td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
 										 }
 									
-											 
-							/* remove
-										 
-										 		 if (isset($_GET['file'])) {
-                                                
-                                                $file = $_GET["file"];
-                                                $name = basename($file) ;
-                                                
-                                                
-                                                header("Content-type:application/pdf");
-                                                
-                                                // It will be called downloaded.pdf
-                                                header("Content-Disposition:attachment;filename='{$name}'");
-                                                
-                                                // The PDF source is in original.pdf
-                                                readfile("$file");
-                                                
-                                    
-                                      } */
 										 
 										 echo "</table>";
 									} 

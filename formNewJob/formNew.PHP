@@ -5,6 +5,13 @@
      $is_update = $_GET["is_update"];
      $job_num = intval($_GET["job_num"]);
      $pic=$_SESSION["picture"];
+     if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
 
      $job_requester = $row['job_requester'];
      $job_name = '';
@@ -68,6 +75,13 @@
     ?>
 <html>
 <head>
+    	<script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
     <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
     <link rel="icon" href="../homePage/logo.png">
     <meta charset="utf-8">
@@ -120,38 +134,6 @@
         	</div>
         </header>
       
-      
-        <!-- Modal -->
-  <!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-   <!--   <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 id="modaltitle" class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          <p id="modalbody">Some text in the modal. </p>
-        </div>
-        <div class="modal-footer">
-            
-    <button id ="b_close" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            
-      <script>
-            var id_row;
-           
-            $("#myModal").on('shown.bs.modal', function () {
-
-                $('#b_close').focus();
-                $('#b_close').click(function (event) {
-                     window.location="../jobList/jobMenu.PHP";
-                
-                    });
-                });
-					
-        </script>-->
-      
 <!-------------MAIN--------------->
         
 		<div class="container"  >
@@ -198,7 +180,7 @@
 									<?php
                                         echo '<input type="text" id="job_name" class="form-control" name="job_name" required value="' . $job_name . '" required>';
                                     ?>
-<!--                                    <input type="text" id="job_name" class="form-control" name="job_name" required>-->
+
 								</div>
 							</div>
 						</div>                                                         
@@ -246,7 +228,7 @@
 									<?php
                                         echo '<input type="text" id="job_department" class="form-control" name="job_department" required value="' . $department . '" required>';
                                     ?>
-<!--                                    <input type="text" id="job_department" class="form-control" name="job_department" required>-->
+
 								</div>
 							</div>
 						</div> 
@@ -260,7 +242,7 @@
 									<?php
                                       echo '<input type="date" id="job_open_date" class="form-control" name="job_open_date" required value="' . $job_open_date .'" required>';
                                     ?>
-<!--                                    <input type="date" id="job_open_date" class="form-control" name="job_open_date" required>-->
+
 								</div>
 							</div>
 						</div>                               
@@ -271,23 +253,14 @@
                                 <?php
                                     echo '<textarea cols="96" name="job_details" id="job_details" rows="4">' . $description . "</textarea>";  
                                 ?>                      
-<!--                                <textarea cols="96" name="job_details" id="job_details" rows="4"></textarea>-->
+
                             </div>
                         
                             <div><label for="Job requirements">Job requirements</label>
                                 <?php
                                     echo '<textarea cols="96" name="job_requirements" id="job_requirements" rows="4">' . $job_requires . "</textarea>";
                                 ?>
-<!--                                <textarea cols="96" name="job_requirements" id="job_requirements" rows="4"></textarea>-->
-                            </div>
-                        </div>
-                                 
-                        <div class="form-group">
-                            <label for="job_status">Job Status</label>
-                            <div class="inputs">
-								<div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-</span>
+
 
                                 <?php
                                     
@@ -416,9 +389,3 @@
         </script>
   </body>
 </html>
-
-<!--
- <script>
-    $("select[name='status']").val();
-</script>
--->
