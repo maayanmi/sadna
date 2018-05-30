@@ -21,7 +21,7 @@ else{
 	        window.location="../logInPage/logInPage.php";
 	    }
 	   </script>
-        <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+
         <link rel="icon" href="../homePage/logo.png">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +53,8 @@ else{
         <link rel="stylesheet" href="../jobList/jobMenuStyle.CSS">
     </head>
     <body>
-       <header>       
+       <header>
+           <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>

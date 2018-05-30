@@ -55,7 +55,7 @@ else{
     </head>
     <body>
       <header>       
-             <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+            <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
@@ -80,7 +80,6 @@ else{
 				<div class="main-login main-center">
                     <h3>Jobs</h3>
             
-                  <!--<div class="col-md-2 col-sm-2 col-xs-3"></div>-->
                     <?php
                         $servername = "localhost";
                         $database = "maayanmi_hr4u";
@@ -103,14 +102,17 @@ else{
                                          <th>Name </th>
                                          <th>Department </th>
                                          <th>View</th>
+                                         <th id='deleteJob' class='deleteJob' style='display:none'>Delete</th>
                                          <th id='publishCol' class='publishCol' style='display:none'>Publish</th>
                                         </tr>";
 										 // output data of each row 
 										 
 							    while($row = $result->fetch_assoc()) {
-									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td><input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input></td><td id='colPublish' class='colPublish' style='display:none'><input id='publish_".$row["job_number"]."' class='publish-position' style='display:none' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input></td> </tr>";
+									echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["department"]. "</td><td><input id='".$row["job_number"]."' class='update-allocation' type='submit' name='update-allocation' value='Open'data-toggle='modal' data-target='#myModal'></input></td><td id ='jobDelete' class='jobDelete' style='display:none'><input id='delete_".$row["job_number"]."' class='delete-position' value='Delete' type='submit' style='display:none'></input></td><td id='colPublish' class='colPublish' style='display:none'><input id='publish_".$row["job_number"]."' class='publish-position' style='display:none' type='submit' name='update-allocation' value='Publish' data-toggle='modal' data-target='#myModal'></input></td> </tr>";
 							if ($permission==1){
-							    echo "<script> $('.publishCol').show(); $('.colPublish').show(); $('.publish-position').show();</script>";
+							    echo "<script> $('.publishCol').show(); $('.colPublish').show(); $('.publish-position').show();
+                                $('.deleteJob').show(); $('.jobDelete').show(); $('.delete-position').show();
+                                </script>";
 							}
 								}
 								echo "</table>";
@@ -155,6 +157,54 @@ else{
                           });
                         });
                   </script>
+                    
+                    <script>
+                        $('.delete-position').click (function (event) {
+                            var answer = confirm("Are you sure you want to delete?");
+                          var job_num = parseInt (event.target.id.split ('_')[1]);
+                        if(answer == true){
+                            var currentRow = $(this).closest('tr');
+                          $.ajax ({
+                            type: "POST",
+                            url: "../jobList/jobMenu.PHP",
+                            data: {
+                              job_num: job_num,
+                              action: 'delete'
+                            }
+                          })
+                          .done (function () {
+                            alert ('Job successfully deleted');
+                              currentRow.slideUp(500,function(){
+                                currentRow.remove();
+                                })
+                          })
+                          .fail (function () {
+                            alert ('Failed to delete!');
+                          });
+                        }
+                          
+                        });
+                  </script>
+                    
+                    
+                  <?php
+            
+                        if (isset($_POST['action']) && $_POST['action'] == 'delete')
+                        {
+                                                      
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+                        
+                            // Check connection
+
+                            if (!$conn){
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
+                            $job_num = isset($_POST['job_num']) ? intval($_POST['job_num']) : 0;
+                            $sql_3="DELETE from job where job_number=" . $job_num . " LIMIT 1";
+                            $result = mysqli_query($conn, $sql_3); 
+                        }
+                            
+                    ?> 
 
                         <br><button type="button" style="display: none" class="btn btn-primary" id="createJob" onclick="window.location.href='../formNewJob/formNew.PHP?is_update=false'">Create New Job</button>
                          <script>
