@@ -261,7 +261,12 @@ else{
                                     echo '<textarea cols="96" name="job_requirements" id="job_requirements" rows="4">' . $job_requires . "</textarea>";
                                 ?>
 
-
+                                
+                           
+                            <div class="form-group">
+                            <label for="job_status">Job's status</label>
+                            
+								
                                 <?php
                                     
                                     // Create connection
@@ -356,7 +361,7 @@ else{
 			</div>
 		</div>
 
-   <!------------FOOTER--------------->
+      <!------------FOOTER--------------->
     <footer class="footer-distributed">
             <div class="footer-style">
               <div class="footer-center">
@@ -364,12 +369,10 @@ else{
                     <i class="fa fa-map-marker"></i>
                     <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
                 </div>
-
                 <div>
                     <i class="fa fa-phone"></i>
                     <p>+972 50 6996868 </p>
                 </div>
-
                 <div>
                     <i class="fa fa-envelope"></i>
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
@@ -382,7 +385,6 @@ else{
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }  

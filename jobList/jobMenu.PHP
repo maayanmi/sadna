@@ -22,7 +22,7 @@ else{
 	        window.location="../logInPage/logInPage.php";
 	    }
 	   </script>
-    <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+   
     <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <meta charset="utf-8">
@@ -55,6 +55,7 @@ else{
     </head>
     <body>
       <header>       
+             <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
