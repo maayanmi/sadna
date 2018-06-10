@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $pic=$_SESSION["picture"];
  ?>
 <html>
@@ -9,8 +15,15 @@
         <title>Employees Menu</title>
         <link rel="icon" href="../homePage/logo.png">
         
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>        
+        
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -36,7 +49,7 @@
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
-
+            
             <a class="menu-bar" data-toggle="collapse" href="#menu">
                 <span class="bars"></span>            
             </a>
@@ -104,8 +117,8 @@
                             $emp_department = $_POST["employees_department"];
 
                             if(!empty($emp_name) && !empty($emp_department)){
-                                $sql = "SELECT * FROM employee WHERE department = '".$emp_department."' 
-                                AND name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."'";
+                                $sql = "SELECT * FROM employee WHERE (department LIKE '%".$emp_department."%' OR department LIKE '".$emp_department."%' OR department LIKE '%".$emp_department."') 
+                                AND (name LIKE '%".$emp_name."%' OR name LIKE '".$emp_name."%' OR name LIKE '%".$emp_name."')";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
@@ -135,7 +148,7 @@
                             }
                             //if there is only deprtment
                             else if(empty($emp_name) && !empty($emp_department)){
-                            $sql = "SELECT * FROM employee WHERE department = '".$emp_department."'";
+                            $sql = "SELECT * FROM employee WHERE department LIKE '%".$emp_department."%' OR department LIKE '".$emp_department."%' OR department LIKE '%".$emp_department."'";
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {

@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+ if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $pic=$_SESSION["picture"];
  ?>
 <html>
     <head>
         <title>MBO</title>
         <link rel="icon" href="../homePage/logo.png">
-        
+
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>        
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>

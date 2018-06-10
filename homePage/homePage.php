@@ -3,11 +3,28 @@
 session_start();
  $email=$_SESSION["email"];
  $pic=$_SESSION["picture"];
+ 
+ if (isset($_SESSION["permission"]))
+{
+     $permission = $_SESSION["permission"];
+}
+
+else{
+$permission=0;
+}
 ?>
 <html lang="en">
   <head>
         <title>Home Page</title>
         <link rel="icon" href="../homePage/logo.png">
+      
+      <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
       
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -41,24 +58,11 @@ session_start();
   <body>
 	<header>       
             <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
-            <a href = "homePage.html"><img id ="logo" src = "logo.png" title = "Home Page"></a>
-            <a href = "homePage.html"><img id ="home" src = "home.png" title = "Home Page"></a>
+            <a href = "homePage.php"><img id ="logo" src = "logo.png" title = "Home Page"></a>
+            <a href = "homePage.php"><img id ="home" src = "home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "logOut.png" title = "Logout"></a>
     </header>
       <main>
-        <div class = "main">
-    		<a class="menu-bar" data-toggle="collapse" href="#menu">
-                <span class="bars"></span>            
-            </a>
-        	<div class="collapse menu" id="menu">
-                <ul class="list-inline">
-                    <li><a href="../employeesPage/employeesMenu.php">Employees</a></li>
-                    <li><a href="../jobList/jobMenu.PHP">Managing Jobs</a></li>
-                    <li><a href="../emloyeesEnquiries/empEnquiryList.php">Employees Enquiries</a></li>
-                    <li><a href="../evaluation/evaluationStatus.php">Evaluations</a></li>
-                </ul>   
-        	</div>
-
             <ul>
                 <li><a href= "../employeesPage/employeesMenu.php"><div class="menu_a btn from-top">Employees</div></a></li>
                 <li><a href= "../jobList/jobMenu.PHP"><div class="menu_a btn from-top">Managing Jobs</div></a></li>

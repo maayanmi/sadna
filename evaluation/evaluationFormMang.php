@@ -2,7 +2,13 @@
 
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+ if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $employee_id= $_SESSION["emp_id_f"];
  $pic=$_SESSION["picture"];
 
@@ -13,7 +19,14 @@
         
         <title>Manager Evaluation</title>
         <link rel="icon" href="../homePage/logo.png">
-        
+
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>        
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -236,7 +249,7 @@
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
                 </div>
                </div>
-             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
+             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png" style="height:10%;"> </span>
             </div>
         </footer>
         <script>

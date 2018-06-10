@@ -2,7 +2,13 @@
 
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+ if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $employee_id= $_SESSION["emp_id_w"];
  $pic=$_SESSION["picture"];
  ?>
@@ -11,7 +17,14 @@
         
         <title>Manager Evaluation</title><!--HR4U-->
         <link rel="icon" href="../homePage/logo.png">
-        
+
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>        
         <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -23,9 +36,10 @@
       <link rel="stylesheet" href="https://assets/css/Footer-with-social-icons.css">
       <!--/ Bootstrap Footer Social icons -->
         
-        <link rel="stylesheet" href="../homePage/homePage.css" >
+        <!--link rel="stylesheet" href="../homePage/homePage.css" -->
         <link rel="stylesheet" href="../formNewJob/formStyle.CSS">
         <link rel="stylesheet" href="evalFormEmp.css">
+        <link rel="stylesheet" href="../homePage/homePage.css" >
         
     </head>
     
@@ -183,22 +197,22 @@
         <footer class="footer-distributed">
             <div class="footer-style">
               <div class="footer-center">
-                <div>
+                  <div>
                     <i class="fa fa-map-marker"></i>
-                    <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
-                </div>
+                      <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
+                  </div>
 
-                <div>
+                  <div>
                     <i class="fa fa-phone"></i>
                     <p>+972 50 6996868 </p>
-                </div>
+                  </div>
 
-                <div>
+                  <div>
                     <i class="fa fa-envelope"></i>
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
+                  </div>
                 </div>
-               </div>
-             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png"> </span>
+             <span> <img id= "algoSec" src = "../homePage/AlgoSec.png" style="height:10%;"> </span>
             </div>
         </footer>
         <script>

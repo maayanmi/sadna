@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+ if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $pic=$_SESSION["picture"];
  ?>
 <html>
@@ -12,6 +18,13 @@
         <title>New Employee</title>
         <link rel="icon" href="../homePage/logo.png">
       
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>      
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>

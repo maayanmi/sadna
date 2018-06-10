@@ -2,7 +2,13 @@
 
 <?php session_start();
  $email=$_SESSION["email"];
- $permission = $_SESSION["permission"];
+ if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
  $id_emp = $_GET["id_emp"] ;
  $pic=$_SESSION["picture"];
  ?>
@@ -10,7 +16,14 @@
     <head>
         <title>Watch Employee</title>
         <link rel="icon" href="../homePage/logo.png">
-        
+
+	   <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>        
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -81,7 +94,7 @@
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         echo'<form class="" method="post" action="watchEmployee.php">
-                                            <h3>Create New Employee</h3>
+                                            <h3>Watch Employee</h3>
                                             <div class="form-group">
                                                 <label for="name" class="cols-sm-2 lables" >Name
                                                     <span id="req"></span></label>
@@ -254,7 +267,7 @@
                                          </script>";
                                     } 
                                     else {
-                                          echo "<script> window.alert ('There was a problem updating, Try again later');
+                                          echo "<script> window.alert ('No Update Has Been Made!');
                                          window.location='employeesMenu.php';
                                          </script>";
                                     }
