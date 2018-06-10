@@ -4,10 +4,24 @@
      session_start();
                 
     $pic=$_SESSION["picture"];
+    if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
     
     ?>
     <head>
-        <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+        <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
+
         <link rel="icon" href="../homePage/logo.png">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +53,8 @@
         <link rel="stylesheet" href="../jobList/jobMenuStyle.CSS">
     </head>
     <body>
-       <header>       
+       <header>
+           <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
@@ -112,25 +127,6 @@
                                               echo "<tr><td>" . $row["job_name"]. "</td><td>" . $row["name"]."</td><td> " . $row["candidate_name"]. " </td><td>". "<a href='download.php?file={$path}{$filename}' style='color:#001a4d' id='file_name'>". $filename ."</a><br></br>" . "</td></tr>";
 										 }
 									
-											 
-							/* remove
-										 
-										 		 if (isset($_GET['file'])) {
-                                                
-                                                $file = $_GET["file"];
-                                                $name = basename($file) ;
-                                                
-                                                
-                                                header("Content-type:application/pdf");
-                                                
-                                                // It will be called downloaded.pdf
-                                                header("Content-Disposition:attachment;filename='{$name}'");
-                                                
-                                                // The PDF source is in original.pdf
-                                                readfile("$file");
-                                                
-                                    
-                                      } */
 										 
 										 echo "</table>";
 									} 

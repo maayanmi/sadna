@@ -5,6 +5,13 @@
      $is_update = $_GET["is_update"];
      $job_num = intval($_GET["job_num"]);
      $pic=$_SESSION["picture"];
+     if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
 
      $job_requester = $row['job_requester'];
      $job_name = '';
@@ -68,7 +75,13 @@
     ?>
 <html>
 <head>
-    <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+    	<script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
     <link rel="icon" href="../homePage/logo.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,7 +115,8 @@
     
     
   <body>
-   <header>       
+   <header>
+            <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page" ></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page" ></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
@@ -119,38 +133,6 @@
                 </ul>   
         	</div>
         </header>
-      
-      
-        <!-- Modal -->
-  <!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-   <!--   <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 id="modaltitle" class="modal-title"></h4>
-        </div>
-        <div class="modal-body">
-          <p id="modalbody">Some text in the modal. </p>
-        </div>
-        <div class="modal-footer">
-            
-    <button id ="b_close" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            
-      <script>
-            var id_row;
-           
-            $("#myModal").on('shown.bs.modal', function () {
-
-                $('#b_close').focus();
-                $('#b_close').click(function (event) {
-                     window.location="../jobList/jobMenu.PHP";
-                
-                    });
-                });
-					
-        </script>-->
       
 <!-------------MAIN--------------->
         
@@ -198,7 +180,7 @@
 									<?php
                                         echo '<input type="text" id="job_name" class="form-control" name="job_name" required value="' . $job_name . '" required>';
                                     ?>
-<!--                                    <input type="text" id="job_name" class="form-control" name="job_name" required>-->
+
 								</div>
 							</div>
 						</div>                                                         
@@ -246,7 +228,7 @@
 									<?php
                                         echo '<input type="text" id="job_department" class="form-control" name="job_department" required value="' . $department . '" required>';
                                     ?>
-<!--                                    <input type="text" id="job_department" class="form-control" name="job_department" required>-->
+
 								</div>
 							</div>
 						</div> 
@@ -260,7 +242,7 @@
 									<?php
                                       echo '<input type="date" id="job_open_date" class="form-control" name="job_open_date" required value="' . $job_open_date .'" required>';
                                     ?>
-<!--                                    <input type="date" id="job_open_date" class="form-control" name="job_open_date" required>-->
+
 								</div>
 							</div>
 						</div>                               
@@ -271,24 +253,20 @@
                                 <?php
                                     echo '<textarea cols="96" name="job_details" id="job_details" rows="4">' . $description . "</textarea>";  
                                 ?>                      
-<!--                                <textarea cols="96" name="job_details" id="job_details" rows="4"></textarea>-->
+
                             </div>
                         
                             <div><label for="Job requirements">Job requirements</label>
                                 <?php
                                     echo '<textarea cols="96" name="job_requirements" id="job_requirements" rows="4">' . $job_requires . "</textarea>";
                                 ?>
-<!--                                <textarea cols="96" name="job_requirements" id="job_requirements" rows="4"></textarea>-->
-                            </div>
-                        </div>
-                                 
-                        <div class="form-group">
-                            <label for="job_status">Job Status</label>
-                            <div class="inputs">
-								<div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-</span>
 
+                                
+                           
+                            <div class="form-group">
+                            <label for="job_status">Job's status</label>
+                            
+								
                                 <?php
                                     
                                     // Create connection
@@ -383,7 +361,7 @@
 			</div>
 		</div>
 
-   <!------------FOOTER--------------->
+      <!------------FOOTER--------------->
     <footer class="footer-distributed">
             <div class="footer-style">
               <div class="footer-center">
@@ -391,12 +369,10 @@
                     <i class="fa fa-map-marker"></i>
                     <p><span>94 Shlomo Shmeltzer St.,</span> Petach Tikva 4970602, Israel. </p> 
                 </div>
-
                 <div>
                     <i class="fa fa-phone"></i>
                     <p>+972 50 6996868 </p>
                 </div>
-
                 <div>
                     <i class="fa fa-envelope"></i>
                     <p><a href="mailto:help@algoSec.com">Contact Us</a></p>
@@ -409,16 +385,9 @@
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
-
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }  
         </script>
   </body>
 </html>
-
-<!--
- <script>
-    $("select[name='status']").val();
-</script>
--->

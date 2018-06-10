@@ -9,12 +9,27 @@
     $permission = $_SESSION["permission"];
     $pic=$_SESSION["picture"];
     
+    if (isset($_SESSION["permission"])){
+     $permission = $_SESSION["permission"];
+}
+
+else{
+    $permission=0;
+}
+    
     ?>
         
 
 <html>
     <head>
-    <img   id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
+        <script>
+	    var permission = <?php echo $permission ; ?> ; 
+	    if (permission==0)
+	    {
+	        window.location="../logInPage/logInPage.php";
+	    }
+	   </script>
+    
     <link rel="icon" href="../homePage/logo.png">
     <script> var permission = <?php echo $permission ; ?> ; </script>
     <title>Watch A Position</title>
@@ -51,6 +66,7 @@
     
     <body>
       <header>       
+            <img id ="emp_pic" src='<?php echo $pic ?>' style=' border-radius: 50%;'>
             <a href = "../homePage/homePage.php"><img id ="logo" src = "../homePage/logo.png" title = "Home Page"></a>
             <a href = "../homePage/homePage.php"><img id ="home" src = "../homePage/home.png" title = "Home Page"></a>
             <a href = "../logInPage/logInPage.php?out=1"><img id ="logOut" src = "../homePage/logOut.png" title = "Logout"></a>
